@@ -4,6 +4,7 @@ import React from 'react'
 class Navbar extends React.Component {
     render(){
         return(
+            <div id="body">
             <header class="Allhead transparent" id="Header">
             <div class="header-logo">
                 <a class="logo" title="VGTourism">
@@ -22,9 +23,15 @@ class Navbar extends React.Component {
                         </li>
                     </ul>
                 </nav>
+            <div class="header-right">
+                <nav class="header-sub" id="sub-nav">
+                    
+                </nav>
+            </div>
             </div>
             </div>
             </header>
+            </div>
         )
     }
 }

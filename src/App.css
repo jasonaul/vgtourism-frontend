@@ -1,11 +1,15 @@
 /* Header/Nav CSS */
 
+
+
 .Allhead {
   color: #333;
+  height: 115px;
   left: 0;
   position: absolute;
   right: 0;
   top: 0;
+  transition-duration: .5s;
   z-index: 10;
 }
 
@@ -24,13 +28,23 @@
 
 .header-nav-full {
   display: inline-block;
-  background: #fff;  
+  /* background: #fff;   */
   font-weight: 500;
   height: 90px;
   line-height: 90px;
   position: relative;
-  top: -90px;
+  top: -70px;
   left: 10px;
+}
+
+.Allhead:hover {
+  background: #fff;
+  
+}
+
+.header-main-list {
+  font-size: 25px;
+  padding-top: 25px; 
 }
 
 ul {
@@ -38,7 +52,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #fff
+
 }
 
 ul li {
@@ -46,8 +60,13 @@ ul li {
   padding: 0 0.5rem;
 }
 
-ul li:not(:last-child) {
+/* ul li:not(:last-child) {
   border-right: 1px solid black;
+} */
+
+li:not(:last-child) {
+  margin: 20px;
+  
 }
 
 li a:hover{
