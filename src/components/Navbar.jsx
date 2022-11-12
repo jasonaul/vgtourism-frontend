@@ -11,11 +11,11 @@ class Navbar extends React.Component {
             <Router>
             <div class="header-logo">
                 <a class="logo" title="VGTourism">
-                <Link to='/'>
-                    <img id="logo-image" src='https://i.imgur.com/Ioas0HD.png'></img></Link>
+                <a href="/">
+                    <img id="logo-image" src='https://i.imgur.com/Ioas0HD.png'></img></a>
                 </a>
             </div>
-            </Router>
+            
             <div class="header-nav-full">
             <div class="header-left">
                 <nav class="header-main" id="main-nav">
@@ -29,23 +29,22 @@ class Navbar extends React.Component {
                         <li>
                             <p>    |    </p>
                         </li>
-                        <Router>
-                        <li class="split">
-                            <Link to='/login'>
+
+                        <li class="li-user" >
+                        <a href="/login">
                                 <FaSignInAlt /> Login
-                            </Link>
+                            </a>
                         </li>
                        
-                        <li class="split">
-                            <Link to='/register'>
-                                <FaUser /> Register
-                            </Link>
+                        <li class="li-user">
+                        <a href="/register"><FaUser /> Register</a>
                         </li>
-                        </Router>
+
                     </ul>
                 </nav>
             </div>
             </div>
+            </Router>
             </header>
             </div>
         )

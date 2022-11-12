@@ -12,10 +12,9 @@ function App() {
 
     <>
     <div class='App'>
-      <div class="hero-image">
-    <Navbar />
+
     </div>
-    </div>
+
  
     <BrowserRouter>
 
