@@ -1,6 +1,6 @@
 import React from 'react'
 // import {FaSignInAlt, FaSignOutAlt, FaUser} from 'react-icons/fa';
-import {Link, BrowserRouter as Router} from 'react-router-dom'
+import { BrowserRouter as Router} from 'react-router-dom'
 import { FaSignInAlt, FaSignOutAlt, FaUser} from 'react-icons/fa'
 
 class Navbar extends React.Component {
