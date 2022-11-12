@@ -1,4 +1,6 @@
 import React from 'react'
+// import {FaSignInAlt, FaSignOutAlt, FaUser} from 'react-icons/fa';
+import {Link, BrowserRouter as Router} from 'react-router-dom'
 
 
 class Navbar extends React.Component {
@@ -6,26 +8,29 @@ class Navbar extends React.Component {
         return(
             <div id="body">
             <header class="Allhead transparent" id="Header">
+            <Router>
             <div class="header-logo">
                 <a class="logo" title="VGTourism">
-                    <img id="logo-image" src='https://i.imgur.com/Ioas0HD.png'></img>
+                <Link to='/'>
+                    <img id="logo-image" src='https://i.imgur.com/Ioas0HD.png'></img></Link>
                 </a>
             </div>
+            </Router>
             <div class="header-nav-full">
             <div class="header-left">
                 <nav class="header-main" id="main-nav">
                     <ul class="header-main-list">
-                        <li>
+                        <li class="nav-text-color">
                             <a href="/destinations">Destinations</a>
                         </li>
                         <li>
-                            <a href="/destinations">Games</a>
+                            <a href="/games">Games</a>
                         </li>
                     </ul>
                 </nav>
             <div class="header-right">
                 <nav class="header-sub" id="sub-nav">
-                    
+
                 </nav>
             </div>
             </div>
