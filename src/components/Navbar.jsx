@@ -1,7 +1,7 @@
 import React from 'react'
 // import {FaSignInAlt, FaSignOutAlt, FaUser} from 'react-icons/fa';
 import {Link, BrowserRouter as Router} from 'react-router-dom'
-
+import { FaSignInAlt, FaSignOutAlt, FaUser} from 'react-icons/fa'
 
 class Navbar extends React.Component {
     render(){
@@ -20,19 +20,30 @@ class Navbar extends React.Component {
             <div class="header-left">
                 <nav class="header-main" id="main-nav">
                     <ul class="header-main-list">
-                        <li class="nav-text-color">
+                        <li class="li-left">
                             <a href="/destinations">Destinations</a>
                         </li>
-                        <li>
+                        <li class="li-left">
                             <a href="/games">Games</a>
                         </li>
+                        <li>
+                            <p>    |    </p>
+                        </li>
+                        <Router>
+                        <li class="split">
+                            <Link to='/login'>
+                                <FaSignInAlt /> Login
+                            </Link>
+                        </li>
+                       
+                        <li class="split">
+                            <Link to='/register'>
+                                <FaUser /> Register
+                            </Link>
+                        </li>
+                        </Router>
                     </ul>
                 </nav>
-            <div class="header-right">
-                <nav class="header-sub" id="sub-nav">
-
-                </nav>
-            </div>
             </div>
             </div>
             </header>
@@ -45,10 +56,3 @@ class Navbar extends React.Component {
 export default Navbar
 
 
-{/* <div class="header-nav">
-                <div className="header-logo">
-                    <a class="logo-link" href='#' id="headlogo" title="VGTourism">
-                        <img alt class="hidden" src='https://i.imgur.com/tuhpvhM.png'></img>
-                    </a>
-                </div>
-            </div> */}
