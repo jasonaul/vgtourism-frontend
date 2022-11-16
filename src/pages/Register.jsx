@@ -23,16 +23,12 @@ function Register() {
 
     const {user, isLoading, isError, isSuccess, message} = useSelector((state) => state.auth)
 
-// const handleChange = event => {
-//     setMessage(event.target.value);
-// }
-
     useEffect(() => {
         if(isError) {
             toast.error(message)
         }
         if(isSuccess || user) {
-            navigate('/')
+            navigate('/register')
         }
         dispatch(reset())
     }, [user, isError, isSuccess, message, navigate, dispatch])

@@ -1,14 +1,14 @@
 import React from 'react'
-// import {FaSignInAlt, FaSignOutAlt, FaUser} from 'react-icons/fa';
 import { BrowserRouter as Router} from 'react-router-dom'
 import { FaSignInAlt, FaSignOutAlt, FaUser} from 'react-icons/fa'
+
 
 class Navbar extends React.Component {
     render(){
         return(
             <div id="body">
             <header class="Allhead transparent" id="Header">
-            <Router>
+
             <div class="header-logo">
                 <a class="logo" title="VGTourism">
                 <a href="/">
@@ -40,11 +40,17 @@ class Navbar extends React.Component {
                         <a href="/register"><FaUser /> Register</a>
                         </li>
 
+                        <li class="li-user" >
+                        <a href="/logout">
+                                <FaSignOutAlt /> Logout
+                            </a>
+                        </li>
+
                     </ul>
                 </nav>
             </div>
             </div>
-            </Router>
+
             </header>
             </div>
         )

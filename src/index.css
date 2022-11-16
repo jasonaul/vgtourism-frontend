@@ -198,6 +198,13 @@ a {
   margin-bottom: 20px;
 }
 
+.btn-form{
+  
+  width: 50%;
+  margin-left: 25%;
+  margin-bottom: 20px;
+}
+
 /* ----- Spinner / Loading ----- */ 
 
 .loadingSpinnerContainer {
@@ -220,4 +227,18 @@ a {
   border-color: #000 transparent #555 transparent;
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
+}
+
+
+/* Main Destination Page */
+
+.destination-heading {
+  margin-top: 200px;
+}
+
+
+/* New Destination Form */
+
+.form-group {
+  margin-top: 200px;
 }
