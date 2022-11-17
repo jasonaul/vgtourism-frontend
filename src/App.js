@@ -1,37 +1,42 @@
 import React from 'react'
-import './index.css';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import {ToastContainer} from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import Navbar from './components/Navbar';
-import Home from './components/pages/Home';
-import Destinations from './pages/Destinations';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
+import { BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
+
+
+import UsersPage from './user/pages/Users'
+import UserDestinations from './destinations/pages/UserDestinations'
+import NewDestination from './destinations/pages/NewDestination'
+import Navbar from './shared/components/Navigation/Navbar'
+import NavbarTrue from './shared/components/Navigation/NavbarTrue'
+import { SingleDestinationDisplay } from './destinations/pages/UserDestinations'
 
 function App() {
-  return (
+  return <Router>
 
-    <>
+  <NavbarTrue />
+<main>
+<Switch>
 
-    <Router>
-    <div class='container-bar'>
+    <Route path="/users" exact>
+      <UsersPage />
+    </Route>
 
-    <Navbar />
+    <Route path="/destinations/:destID" exact>
+      <SingleDestinationDisplay />
+    </Route>
 
-<Routes>
-  <Route path='/' element={<Home />}/>
-  <Route path='/destinations' element={<Destinations />}/>
-  <Route path='/login' element={<Login />}/>
-  <Route path='/register' element={<Register />}/>
-  <Route path='/dashboard' element={<Dashboard />}/>
-</Routes>
-    </div>
-</Router>
+    <Route path="/:userID/destinations" exact>
+      <UserDestinations />
+    </Route>
 
-<ToastContainer />
-  </>)
+    <Route path="/destinations/new" exact>
+      <NewDestination />
+    </Route>
+
+    <Redirect to="/" /> {/* If no route is hit, it will automatically redirect home. Change this path later if you want it to redirect to a "Not Found" style page*/}
+
+</Switch>
+</main>
+  </Router>
 }
 
-export default App;
+export default App

@@ -1,0 +1,68 @@
+.destination-item {
+    margin: 1rem 0;
+    columns: 2;
+    width: 150%;
+    background-color: yellow;
+  }
+  
+  .destination-item-content {
+    padding: 5;
+  }
+  
+  .destination-item-info {
+    padding: 1rem;
+    text-align: center;
+    color: black;
+  }
+  
+  .destination-item-image {
+    width: 100%;
+    height: 12.5rem;
+    margin-right: 1.5rem;
+  }
+  
+  .destination-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .destination-item-info h2,
+  .destination-item-info h3,
+  .destination-item-info p {
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .destination-item-actions {
+    padding: 1rem;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    color: black;
+  }
+  
+  .destination-item-modal-content {
+    padding: 0;
+  }
+  
+  .destination-item-modal-actions {
+    text-align: right;
+  }
+  
+  .destination-item-actions button,
+  .destination-item-actions a {
+    margin: 0.5rem;
+  }
+
+  .d-item-title {
+    font-weight: 900;
+  }
+
+  .d-item-sub {
+    font-weight: 600;
+  }
+  
+  @media (min-width: 768px) {
+    .destination-item-image {
+      height: 20rem;
+    } 
+  }

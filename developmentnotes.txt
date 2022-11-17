@@ -1,0 +1,16 @@
+
+Guide to finding the pages to work on.
+
+Layout of the SINGLE PAGE DESTINATION page:
+* SingleDestLayout.js -- src->destinations->components
+
+Where you can re-route the data into individual pages:
+* UserDestinations.js -- src->destinations->pages
+
+Where you put in all the individual schema components for...:
+* A Single Destination: SingleDestination.js
+* A user's submission: DestinationList.js 
+
+
+Dummy Destionations:
+UserDestinations.js

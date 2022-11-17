@@ -13,232 +13,31 @@ code {
 }
 
 
-
-#hero-image {
-    background-image:  url("https://upload.wikimedia.org/wikipedia/commons/1/1b/View_of_Santa_Maria_del_Fiore_in_Florence.jpg");
-    height: 550px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    margin-top: 15px;
-  }
-
-/* Header/Nav CSS */
-
-
-
-.Allhead {
-  color: #333;
-  height: 115px;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  transition-duration: .5s;
-  z-index: 10;
-}
-
-.header-logo {
-  display: inline-block;
-  left: 0;
-  top: 0;
-}
-
-#logo-image {
-  left: 0;
-  top: 0;
-  min-width: 180px;
-  width: 100px;
-}
-
-.header-nav-full {
-  display: inline-block;
-  /* background: #fff;   */
-  font-weight: 500;
-  height: 90px;
-  line-height: 90px;
-  position: relative;
-  top: -70px;
-  left: 10px;
-}
-
-
-
-
-.header-main-list {
-  font-size: 30px;
-  padding-top: 25px; 
-}
-
-.li-user {
-  font-size: 20px;
-}
-
-.Allhead:hover{
-  background: #fff;
-  color: black;
-  
-}
-
-
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-
-}
-
-
-ul li {
-  display: inline-block;
-  padding: 0 0.5rem;
-  color: white;
-}
-
-
-
-li:not(:last-child) {
-  margin: 20px;
-  
-}
-
-li a:hover{
-  color: rgb(0, 136, 255);
-}
-
-a {
-  page-break-inside: avoid;
-}
-
-/* The "*" is a wildcard and applies those styles to all elements. Helps to reset CSS files in order to default all native browser margin/padding on different elements to a common value. */
-* {
-  box-sizing: border-box;
-  color: inherit;
-  font: inherit;
-  line-height: inherit;
-  margin: 0;
-  padding: 0;
-  text-decoration: inherit;
-}
-
-
-/* ------ */
-
-
-
-
-/* ----- Form CSS ----- */ 
-
-.registerForm {
-  margin-top: 50px;
-}
-
-.register-heading {
-  margin-top: 200px;
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 50px;
-  padding: 0 20px;
-  color: rgb(0, 136, 255);
+.aligned {
   text-align: center;
-}
-
-.register-heading p {
-  color: rgb(0, 136, 255);
-  margin-top: 25px;
-}
-
-.registerForm  {
-  width: 70%;
-  margin: 0 auto;
-}
-
-.form-group {
-  margin-bottom: 10px;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #e6e6e6;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  font-family: inherit;
-}
-
-.form-group label {
-  text-align: left;
-  display: block;
-  margin: 0 0 5px 3px;
-}
-
-.btn-register {
-  padding: 10px 20px;
-  border: 1px solid #000;
-  border-radius: 5px;
-  background: #000;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  text-align: center;
-  appearance: button;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-block {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.btn-form{
-  
-  width: 50%;
-  margin-left: 25%;
-  margin-bottom: 20px;
-}
-
-/* ----- Spinner / Loading ----- */ 
-
-.loadingSpinnerContainer {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 5000;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.loadingSpinner {
-  width: 64px;
-  height: 64px;
-  border: 8px solid;
-  border-color: #000 transparent #555 transparent;
-  border-radius: 50%;
-  animation: spin 1.2s linear infinite;
+
+.slide-in-left-enter {
+  transform: translateX(-100%);
 }
 
-
-/* Main Destination Page */
-
-.destination-heading {
-  margin-top: 200px;
+.slide-in-left-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 200ms;
 }
 
+.slide-in-left-exit {
+  transform: translateX(0%);
+  opacity: 1;
+}
 
-/* New Destination Form */
-
-.form-group {
-  margin-top: 200px;
+.slide-in-left-exit-active {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: all 200ms;
 }
