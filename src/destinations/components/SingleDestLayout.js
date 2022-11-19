@@ -1,7 +1,7 @@
 import React from "react";
 import './SingleDestLayout.css'
 import Card from "../../shared/components/UIComponents/Card";
-
+import Map from "../../shared/components/UIComponents/Map";
 
 const SingleDestLayout = props => {
     return (
@@ -52,15 +52,18 @@ const SingleDestLayout = props => {
                             <img className="img-gallery" src={props.ingameimg2}></img>
                             <img className="img-gallery"  src={props.image3}></img>
                             <img className="img-gallery" src={props.ingameimg3}></img>
-             </div>
+                        </div>
                     </div>
-                
+                   
                 </div>
 
                 
                
             </div>
-              
+            <div className="map-container">
+                    <p className="headline-lead">Discover the Area</p>
+                    <Map center={props.coordinates} zoom={16}/>
+                </div>
         </div>
        
         </div>
