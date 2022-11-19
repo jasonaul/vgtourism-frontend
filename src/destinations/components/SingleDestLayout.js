@@ -5,24 +5,64 @@ import Card from "../../shared/components/UIComponents/Card";
 
 const SingleDestLayout = props => {
     return (
-        <li>
-    
-    <div className="destination-item-content">
-        <div className="destination-item-image">
-            <img src={props.image} alt={props.title} />
+
+<div className="site-content" id="main-destination-content">
+    <div className="prime-gap l-sitewidth s-down">
+        <div className="DestoPageHeader">
+            <div className="DestoPageHeader-header">
+                <h1 className="Desto-title">{props.destinationName}</h1>
+                <div class="Desto-meta">
+                    <p className="Game-origin">{props.game}  <span className="Game-origin-info">{props.series} Series</span></p>      
+                </div>
+
+            </div>
+        <div className="prime-gap zero">
+            <div className="destination-header-image">
+                <div className="media image positioned">
+                    <img className="ingameimg1 positioned" alt={props.headline} src={props.ingameimg1}></img>
+                </div>
+            </div>
+        <div className="prime-gap zero">
+            <div className="grid-destination">
+                <div className="inner-grid">
+                    <div className="grid-main">
+                        <div className="prime-gap l-sitewidth s-down">
+                            <section className="headline-text">
+                                
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div className="destination-item-info">
-            <h2 className="d-item-title">{props.game}</h2>
-            <h3 className="d-item-sub">{props.address}</h3>
-            <p className="d-item-description">{props.description}</p>
         </div>
-        <div className="destination-item-actions">
-            <button>View on Map</button>
-            <button>Edit Information</button>
-            <button>Delete</button>
         </div>
     </div>
-    </li>
-)};
+</div>
+
+
+
+
+    )};
 
 export default SingleDestLayout
+
+
+    //     <li>
+    
+    // <div className="destination-item-content">
+    //     <div className="destination-item-image">
+    //         <img src={props.image} alt={props.title} />
+    //     </div>
+    //     <div className="destination-item-info">
+    //         <h2 className="d-item-title">{props.game}</h2>
+    //         <h3 className="d-item-sub">{props.address}</h3>
+    //         <p className="d-item-description">{props.description}</p>
+    //     </div>
+    //     <div className="destination-item-actions">
+    //         <button>View on Map</button>
+    //         <button>Edit Information</button>
+    //         <button>Delete</button>
+    //     </div>
+    // </div>
+    // </li>

@@ -1,0 +1,186 @@
+
+div {
+    display: block;
+}
+
+h1, h2, h3, h4 {
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+#main-destination-content {
+    transform-origin: 50vw 50vh;
+}
+
+.site-content {
+    transform-origin: 50% 50vh;
+    transition: transform .4s cubic-bezier(.175,.885,.32,1.275) .2s;
+}
+
+.prime-gap.s-down {
+    margin-bottom: 50px;
+}
+
+@media screen and (max-width: 750px) {
+    .grid-destination {
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .grid-destination {
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .inner-grid {
+        flex-wrap: wrap;
+        max-width: 100%;
+        padding-right: 0;
+    }
+    .grid-main {
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 1200px) {
+    .l-sitewidth {
+        margin-left: 60px;
+        margin-right: 60px;
+    }
+    .DestoPageHeader {
+        padding-top: 150px;
+    }
+    .grid-destination {
+        margin-bottom: 10vw;
+        margin-left: 60px;
+        margin-right: 60px;
+    }
+    .inner-grid {
+        margin-right: -60px;
+        padding-right: 60px;
+    }
+}
+
+@media (max-width: 1600px) {
+    .Desto-title {
+        font-size: calc(24px + 2.5vw);
+    }
+    .Desto-meta {
+        font-size: calc(14px + .25vw);
+    }
+}
+
+
+.Desto-meta{
+    color: rgb(255, 0, 0);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+    
+}
+
+.Desto-meta p {
+    transition: color .1s linear
+}
+
+.Desto-title {
+    color: #111;
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: .1ex;
+}
+
+.DestoPageHeader {
+    padding-top: 25px;
+}
+
+.DestoPageHeader-header {
+    margin-bottom: 30px;
+}
+
+.l-sitewidth {
+    margin-left: calc(50% - 270px);
+    margin-right: calc(50% - 595px);
+    position: relative;
+}
+
+.prime-gap {
+    margin-bottom: 25px;
+}
+
+.prime-gap.zero {
+    margin-bottom: 0;
+}
+
+.Game-origin {
+        color: #da202c;
+        font-weight: 500;
+        margin-right: 0.25em;
+        position: relative;
+}
+
+.Game-origin-info {
+    color: gray;
+    position: relative;
+}
+
+.destination-header-image {
+    position: relative;
+}
+
+.DestoPageHeader .media{
+    z-index: auto;
+}
+
+.media.positioned {
+    background-color: transparent;
+}
+
+.ingameimg1 {
+    max-height: 400px;
+    max-width: 10000px;
+}
+
+.grid-destination {
+    margin-bottom: 100px;
+    margin-left: calc(50% - 600px);
+    margin-right: calc(50% - 600px);
+}
+
+.inner-grid {
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+    margin-right: 100px;
+    float: left;
+    padding-right: 100px;    
+}
+
+.grid-main {
+    width: 70%;
+}
+
+.media {
+    background-color:#e4e2e2;
+    overflow: hidden;
+    position: relative;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+}
+
+* {
+    box-sizing: border-box;
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+    text-decoration: inherit;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
