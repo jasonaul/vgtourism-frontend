@@ -17,9 +17,16 @@
     font-weight: 500;
     height: 90px;
     line-height: 50px;
-    position: relative;
+    position: absolute;
+    white-space: nowrap;
     top: -5px;
     left: 50px;
+  }
+
+  @media (max-width: 1000px) {
+    .header-main-list {
+      max-width: 100%;
+    }
   }
   @media (max-width: 768px) {
    

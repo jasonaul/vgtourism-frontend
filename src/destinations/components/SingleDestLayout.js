@@ -35,7 +35,8 @@ const SingleDestLayout = props => {
                         </div>
                         <div className="article-main prime-gap l-sitewidth s-down">
                         <p className="article-text">
-                            {props.description1}
+                            {/* {props.description1} */}
+                            
                         </p>
                         <p className="article-text">
                             {props.description2}
