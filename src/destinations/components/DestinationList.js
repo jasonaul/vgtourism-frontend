@@ -32,6 +32,7 @@ const DestinationList = props => {
                 state={destination.state}
                 country={destination.country} 
                 continent={destination.continent}
+                coordinates={destination.coordinates}
                 latitude={destination.latitude}
                 longitude={destination.longitude} 
                 creator={destination.creator}

@@ -11,7 +11,7 @@ const DUMMY_DESTINATIONS = [
         description: 'A really famous building.',
         image: 'https://workleavebalance.files.wordpress.com/2014/07/dscf0725.jpg',
         address: 'Florence, Italy',
-        location: {
+        coordinates: {
             lat: 40.7484405,
             lng: -73.9878584
         },
@@ -23,7 +23,7 @@ const DUMMY_DESTINATIONS = [
         description: 'A city.',
         image: 'https://i.imgur.com/https://coolmaterial.com/wp-content/uploads/2018/11/Hong-Kong-647x441.jpg.jpeg',
         address: 'Hong Kong',
-        location: {
+        coordinates: {
             lat: 40.7484405,
             lng: -73.9878584
         },
@@ -35,7 +35,7 @@ const DUMMY_DESTINATIONS = [
         description: 'A really famous building.',
         image: 'https://i.imgur.com/KnSikdp.jpeg',
         address: '20 W 34th St, New York, NY 10001',
-        location: {
+        coordinates: {
             lat: 40.7484405,
             lng: -73.9878584
         },
@@ -53,6 +53,10 @@ const DUMMY_DESTINATIONS = [
         state: '',
         country: 'Yemen',
         continent: 'Asia',
+        coordinates: {
+            lat: 15.9176648,
+            lng: 48.6235893,
+        },
         latitude: 15.9176648,
         longitude: 48.6235893,
         creator: 'u3',
