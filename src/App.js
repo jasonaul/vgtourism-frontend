@@ -28,7 +28,7 @@ function App() {
       <UserDestinations />
     </Route>
 
-    <Route path="/destinations/new" exact>
+    <Route path="/new" exact>
       <NewDestination />
     </Route>
 
