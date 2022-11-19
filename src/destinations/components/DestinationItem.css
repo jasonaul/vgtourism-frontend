@@ -60,6 +60,11 @@
   .d-item-sub {
     font-weight: 600;
   }
+
+  .map-container {
+    height: 20rem;
+    width: 100%;
+  }
   
   @media (min-width: 768px) {
     .destination-item-image {
