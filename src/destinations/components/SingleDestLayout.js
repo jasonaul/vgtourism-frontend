@@ -28,8 +28,22 @@ const SingleDestLayout = props => {
                     <div className="grid-main">
                         <div className="prime-gap l-sitewidth s-down">
                             <section className="headline-text">
-                                
+                                <div className="headline-lead">
+                                  <p className="headline">{props.headline}</p>  
+                                </div>
                             </section>
+                        </div>
+                        <div className="article-main prime-gap l-sitewidth s-down">
+                        <p className="article-text">
+                            {props.description1}
+                        </p>
+                        <p className="article-text">
+                            {props.description2}
+                        </p>
+                        <p className="article-text">
+                            {props.description3}
+                        </p>
+
                         </div>
                     </div>
                 </div>

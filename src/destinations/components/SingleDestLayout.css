@@ -26,6 +26,10 @@ h1, h2, h3, h4 {
         margin-left: 25px;
         margin-right: 25px;
     }
+    body {
+        -webkit-hyphens: auto;
+        hyphens: auto;
+    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -71,8 +75,19 @@ h1, h2, h3, h4 {
     .Desto-meta {
         font-size: calc(14px + .25vw);
     }
+    body {
+        font-size: calc(14px + .25vw);
+    }
+    .headline-lead {
+        font-size: calc(18px + .75vw);
+    }
 }
 
+.headline-text:after {
+    clear: both;
+    content: "";
+    display: block;
+}
 
 .Desto-meta{
     color: rgb(255, 0, 0);
@@ -147,8 +162,8 @@ h1, h2, h3, h4 {
 
 .grid-destination {
     margin-bottom: 100px;
-    margin-left: calc(50% - 600px);
-    margin-right: calc(50% - 600px);
+    /* margin-left: calc(50% - 600px);
+    margin-right: calc(50% - 600px); */
 }
 
 .inner-grid {
@@ -174,6 +189,45 @@ h1, h2, h3, h4 {
     z-index: 0;
 }
 
+a, section {
+    page-break-inside: avoid;
+}
+
+article, header, footer, nav, section {
+    display: block;
+}
+
+.headline-lead {
+    color: black;
+    float: left;
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: .02em;
+    letter-spacing: .015em;
+    line-height: 1.3;
+    margin-top: -80px;
+    width: 100%;
+    /* word-spacing: -0.275em; */
+}
+
+.article-main {
+   width: 175%; 
+   margin-top: -50px;
+}
+
+.article-text {
+    margin-bottom: 25px;
+}
+
+.destination-list {
+    max-width: 100%;
+}
+
+
+body {
+    -webkit-font-smoothing: antialiased;
+}
+
 * {
     box-sizing: border-box;
     color: inherit;
@@ -184,3 +238,6 @@ h1, h2, h3, h4 {
     text-decoration: inherit;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
+
+
+
