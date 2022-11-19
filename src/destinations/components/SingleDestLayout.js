@@ -5,7 +5,7 @@ import Card from "../../shared/components/UIComponents/Card";
 
 const SingleDestLayout = props => {
     return (
-
+<>
 <div className="site-content" id="main-destination-content">
     <div className="prime-gap l-sitewidth s-down">
         <div className="DestoPageHeader">
@@ -45,15 +45,35 @@ const SingleDestLayout = props => {
                         </p>
 
                         </div>
+                        <div className="gallery1">
+                            <img className="img-gallery" src={props.image1}></img>
+                            <img className="img-gallery" src={props.ingameimg1}></img>
+                            <img className="img-gallery"  src={props.image2}></img>
+                            <img className="img-gallery" src={props.ingameimg2}></img>
+                            <img className="img-gallery"  src={props.image3}></img>
+                            <img className="img-gallery" src={props.ingameimg3}></img>
+             </div>
                     </div>
+                
                 </div>
+
+                
+               
             </div>
+              
         </div>
+       
         </div>
+        
         </div>
+        
     </div>
+ 
 </div>
 
+
+
+</>
 
 
 
@@ -80,3 +100,20 @@ export default SingleDestLayout
     //     </div>
     // </div>
     // </li>
+
+
+
+//     <div class="img-row">
+//     <div class="img-column">
+//         <img className="extra-img" src={props.image1}></img>
+//         <img className="extra-img" src={props.ingameimg1}></img>
+//     </div>
+//     <div class="img-column">
+//         <img className="extra-img" src={props.image2}></img>
+//         <img className="extra-img" src={props.ingameimg2}></img>
+//     </div>
+//     <div class="img-column">
+//         <img className="extra-img" src={props.image3}></img>
+//         <img className="extra-img" src={props.ingameimg3}></img>
+//     </div>
+// </div>
