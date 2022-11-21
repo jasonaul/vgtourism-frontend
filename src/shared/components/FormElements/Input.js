@@ -47,6 +47,8 @@ const Input = props => {
         })
     }
 
+    // Considering making the below a simple if...else since you are having trouble adding the selector option.
+
     const element = props.element === 'input' ? (
          <input 
             id={props.id} 
@@ -57,12 +59,14 @@ const Input = props => {
             value={inputState.value}
             /> 
     ):(
-         <textarea 
-            id={props.id} 
-            rows={props.rows || 3} 
-            onChange={changeHandler} 
-            onBlur={touchHandler}
-            value={inputState.value}/>
+        <textarea 
+        id={props.id} 
+        rows={props.rows || 3} 
+        onChange={changeHandler} 
+        onBlur={touchHandler}
+        value={inputState.value}/>
+
+            
     );
     
 

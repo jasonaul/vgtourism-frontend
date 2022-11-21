@@ -66,7 +66,7 @@ const SingleDestLayout = props => {
                     <Map center={props.coordinates} zoom={16}/>
                 </div>
         </div>
-       
+        
         </div>
         
         </div>

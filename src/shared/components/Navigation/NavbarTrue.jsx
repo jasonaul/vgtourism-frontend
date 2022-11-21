@@ -23,7 +23,7 @@ const NavbarTrue = props => {
         <nav className="main-navigation-mobile-nav"></nav>
     </MobileNav> 
 
-       <Header class="Allhead transparent" id="Header">
+       <Header className="Allhead transparent" id="Header">
             
            
             <button className="main-navigation-menu-btn" onClick={openSideNav}>
@@ -31,44 +31,44 @@ const NavbarTrue = props => {
                 <span />
                 <span />
                 </button>
-            {/* <div class="header-logo">
-                <a class="logo" title="VGTourism">
+            {/* <div className="header-logo">
+                <a className="logo" title="VGTourism">
                 <a href="/">
                     <img id="logo-image" src='https://i.imgur.com/Ioas0HD.png'></img></a>
                 </a>
             </div>
              */}
-            <div class="header-nav-full">
-            <div class="header-left main-navigation-header-nav">
-                <nav class="header-main" id="main-nav">
+            <div className="header-nav-full">
+            <div className="header-left main-navigation-header-nav">
+                <nav className="header-main" id="main-nav">
                 
-                    <ul class="header-main-list">
-                        <li class="li-left">
+                    <ul className="header-main-list">
+                        <li className="li-left">
                             <a href="/destinations">Destinations</a>
                         </li>
-                        <li class="li-left">
+                        <li className="li-left">
                             <a href="/games">Games</a>
                         </li>
                         <li>
                             <p>    |    </p>
                         </li>
 
-                        <li class="li-user" >
+                        <li className="li-user" >
                         <a href="/login">
                                 <FaSignInAlt /> Login
                             </a>
                         </li>
                        
-                        <li class="li-user">
+                        <li className="li-user">
                         <a href="/register"><FaUser /> Register</a>
                         </li>
 
-                        <li class="li-user" >
+                        <li className="li-user" >
                         <a href="/logout">
                                 <FaSignOutAlt /> Logout
                             </a>
                         </li>
-                        <li class="header-mobile">
+                        <li className="header-mobile">
                             <h1>Field</h1>
                         </li>
                         

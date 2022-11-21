@@ -8,6 +8,7 @@ import NewDestination from './destinations/pages/NewDestination'
 import Navbar from './shared/components/Navigation/Navbar'
 import NavbarTrue from './shared/components/Navigation/NavbarTrue'
 import { SingleDestinationDisplay } from './destinations/pages/UserDestinations'
+import UpdateDestination from './destinations/pages/UpdateDestination'
 
 function App() {
   return <Router>
@@ -30,6 +31,10 @@ function App() {
 
     <Route path="/new" exact>
       <NewDestination />
+    </Route>
+
+    <Route path="/destinations/:destID/edit" exact>
+      <UpdateDestination />
     </Route>
 
     <Redirect to="/" /> {/* If no route is hit, it will automatically redirect home. Change this path later if you want it to redirect to a "Not Found" style page*/}
