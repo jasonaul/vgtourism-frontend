@@ -24,7 +24,9 @@ const inputReducer = (state, action) => {
 const Input = props => {
 
    const [inputState, dispatch] = useReducer(inputReducer, {
-    value: '', isTouched: false , isValid: false 
+    value: props.trasnferedValue || '', 
+    isTouched: false , 
+    isValid: props.trasnferedValid || false 
             }); 
     // A function that receives an action and current state, and we can update t he current state based on the action we receive, return it, and reducer will give it back to you and re-render everything.
         //Dispatch is how we dispatch actions to the reducer function and ultimatley return a new state and render the new component

@@ -1,38 +1,41 @@
 import React, { useCallback, useReducer } from 'react'
     // useCallback to avoid an infinite loop between NewDestination.js and Input.js, for our form.
+import useFormHook from '../../shared/hooks/form'
+    // Allows us to share stateful logic, specifically using it to re-render for our Update form.
 import './NewDestination.css'
 import Input from '../../shared/components/FormElements/Input'
 import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH, } from '../../shared/util/validators'
     //Use the validator require in the fields which are required by the user before submission of data.
 import Button from '../../shared/components/FormElements/Button'
 
-const reducerForForm = (state, action) => {
-    switch (action.type) {
-        case 'INPUT_CHANGE':
-            let validForm = true;
-            for (const input in state.inputs) {
-                if (input === action.input) {
-                    validForm = validForm && action.isValid;
-                } else {
-                    validForm = validForm && state.inputs[input].isValid;
-                }
-            }
-            return {
-                ...state,
-                inputs: {
-                    ...state.inputs,
-                    [action.input]: {value: action.value, isValid: action.isValid}
-                },
-                isValid: validForm
-            };
-        default: 
-            return state;
-    }
-};    
+// const reducerForForm = (state, action) => {
+//     switch (action.type) {
+//         case 'INPUT_CHANGE':
+//             let validForm = true;
+//             for (const input in state.inputs) {
+//                 if (input === action.input) {
+//                     validForm = validForm && action.isValid;
+//                 } else {
+//                     validForm = validForm && state.inputs[input].isValid;
+//                 }
+//             }
+//             return {
+//                 ...state,
+//                 inputs: {
+//                     ...state.inputs,
+//                     [action.input]: {value: action.value, isValid: action.isValid}
+//                 },
+//                 isValid: validForm
+//             };
+//         default: 
+//             return state;
+//     }
+// };    
 
 function NewDestination() {
-    const [formState, dispatch] = useReducer(reducerForForm, {
-        inputs: {
+
+    const [formState, formHandler] = useFormHook(
+        {
             destinationName: {
                 value: '',
                 isValid: false
@@ -41,15 +44,18 @@ function NewDestination() {
                 value: '',
                 isValid: false
             }, 
+            game: {
+                value: '',
+                isValid: false
+            }, 
+            series: {
+                value: '',
+                isValid: false
+            }, 
         },
-        isValid: false
-        // isValid stores info if overall form is Valid. Inputs stores info on the validity of inputs.
-            //and this is initial state above.
-    });
+        false
+    );
 
-    const formHandler = useCallback((id, value, isValid) => {
-        dispatch({type: 'INPUT_CHANGE', value: value, isValid: isValid, input: id})
-    }, []);
 
     // const headlineHandler = useCallback((id, value, isValid) => {
         
@@ -127,3 +133,29 @@ function NewDestination() {
 };
 
 export default NewDestination
+
+
+
+//     const [formState, dispatch] = useReducer(reducerForForm, {
+//         inputs: 
+        //     {
+        //     destinationName: {
+        //         value: '',
+        //         isValid: false
+        //     }, 
+        //     headline: {
+        //         value: '',
+        //         isValid: false
+        //     }, 
+        //     game: {
+        //         value: '',
+        //         isValid: false
+        //     }, 
+        //     series: {
+        //         value: '',
+        //         isValid: false
+        //     }, 
+        // },
+//         isValid: false
+//         // isValid stores info if overall form is Valid. Inputs stores info on the validity of inputs.
+//             //and this is initial state above.
