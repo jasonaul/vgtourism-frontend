@@ -65,7 +65,16 @@
     height: 20rem;
     width: 100%;
   }
-  
+
+  .delete-footer-class {
+    text-align: center;
+  }
+
+  .delete-space {
+    margin-bottom: 20px;
+  }
+
+
   @media (min-width: 768px) {
     .destination-item-image {
       height: 20rem;

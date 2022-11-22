@@ -1,6 +1,7 @@
 import React from "react";
 import './DestinationList.css'
 import Card from "../../shared/components/UIComponents/Card";
+import Button from "../../shared/components/FormElements/Button";
 import DestinationItem from "./DestinationItem";
 // import { FaPlaceOfWorship } from "react-icons/fa";
 
@@ -11,7 +12,7 @@ const DestinationList = props => {
         <div className="destination-list aligned">
             <Card>
                 <h2>You haven't added any destinations yet!</h2>
-                <button>Add a New Destination</button>
+                <Button to="/new">Add a New Destination</Button>
             </Card>
 
         </div>

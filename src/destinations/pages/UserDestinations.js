@@ -4,10 +4,11 @@ import { useParams } from 'react-router-dom';
 import DestinationList from "../components/DestinationList";
 import SingleDestination from "./SingleDestination";
 
+
 const DUMMY_DESTINATIONS = [
     {
         id: 'd1',
-        title: 'Ezio\'s Playhouse',
+        destinationName: 'Ezio\'s Playhouse',
         description: 'A really famous building.',
         image: 'https://workleavebalance.files.wordpress.com/2014/07/dscf0725.jpg',
         address: 'Florence, Italy',

@@ -123,20 +123,23 @@ const [formState, formHook, formDataSetter] = useFormHook({
     const chosenDestination = DUMMY_DESTINATIONS.find(p => p.id === destID)
 
     useEffect(() => {
-        formDataSetter({
-            destinationName: {
-                value: chosenDestination.destinationName,
-                // chosenDestination.destinationName,
-                isValid: true
-                // true
-            },
-            headline: {
-                value: chosenDestination.headline,
-                // chosenDestination.headline,
-                isValid: true
-                //true
-            }
-            }, true);
+        if (chosenDestination) {
+            formDataSetter({
+                destinationName: {
+                    value: chosenDestination.destinationName,
+                    // chosenDestination.destinationName,
+                    isValid: true
+                    // true
+                },
+                headline: {
+                    value: chosenDestination.headline,
+                    // chosenDestination.headline,
+                    isValid: true
+                    //true
+                }
+                }, true);
+        }
+        
             setIsLoading(false);
     }, [formDataSetter, chosenDestination]);
 
