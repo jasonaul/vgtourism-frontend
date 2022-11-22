@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-do
 
 
 import UsersPage from './user/pages/Users'
+import Login from './user/pages/Login'
 import UserDestinations from './destinations/pages/UserDestinations'
 import NewDestination from './destinations/pages/NewDestination'
 import Navbar from './shared/components/Navigation/Navbar'
@@ -35,6 +36,10 @@ function App() {
 
     <Route path="/destinations/:destID/edit" exact>
       <UpdateDestination />
+    </Route>
+
+    <Route path="/login" exact>
+      <Login />
     </Route>
 
     <Redirect to="/" /> {/* If no route is hit, it will automatically redirect home. Change this path later if you want it to redirect to a "Not Found" style page*/}
