@@ -1,22 +1,22 @@
+// NOTE: This version tries to use the http hook you created, but you are having some difficulty....
+
 import React, {useState, useContext} from 'react'
 import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH } from '../../shared/util/validators'
 import Input from '../../shared/components/FormElements/Input';
 import { LoggedIn } from '../../shared/context.js/loggedIn';
 import { useHttp } from '../../shared/hooks/http';
-// import { useParams } from 'react-router-dom';
 import Button from '../../shared/components/FormElements/Button';
 import ErrorMode from '../../shared/components/UIComponents/Error';
 import Spinner from '../../shared/components/UIComponents/Spinner';
 import './Login.css'
 import useFormHook from '../../shared/hooks/form';
-import {useLocation, Redirect} from 'react-router-dom'
+import {useLocation} from 'react-router-dom'
 
 
 
 const Login = () => {
     const auth = useContext(LoggedIn);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState();
+    const {isLoading, error, requestSender, errorClearer} = useHttp();
     const [formState, inputHandler] = useFormHook({
         email: {
             value: '',
@@ -30,51 +30,31 @@ const Login = () => {
 
     const loginSubmitter = async event => {
         event.preventDefault();
-        setIsLoading(true);
+
 
         try {
-            const response = await fetch('http://localhost:8080/api/users/login', {
-            method: 'POST',
-            headers: {
+            const response = await requestSender('http://localhost:8080/api/users/login', 'POST', JSON.stringify({
+            email: formState.inputs.email.value,
+            password: formState.inputs.password.value
+        }),
+            {
+
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email: formState.inputs.email.value,
-                password: formState.inputs.password.value
-            })
-        });
-
-        const responseGiven = await response.json();
-        if (!response.ok) {
-            throw new Error(responseGiven.message)
-        }
-        setIsLoading(false)
-        auth.login();
-        console.log(responseGiven)
-
-        if (response.ok) {
-            <Redirect
-                to={{
-                    pathname: "/users",
-                }}
-/>
-        }
+            }
+            );
+           
+        auth.login(response.user.id);
+        console.log(response.user.id)
         
-        } catch (err) {
-            setIsLoading(false)
-            setError(err.message || "An error is you.")
-        }
-        
+        } catch(err){}
+
                 
     }
 
-    const handleError = () => {
-        setError(null);
-    }
 
     return (
         <>
-    <ErrorMode error={error} onClear={handleError}/>
+    <ErrorMode error={error} onClear={errorClearer}/>
     { isLoading && <Spinner asOverlay/>}
 
     <h2>Login to Your Account</h2>

@@ -44,11 +44,11 @@ const Register = () => {
                 password: formState.inputs.password.value
             })
         });
-        const registerResponse = await response.json();
+        const responseGiven = await response.json();
         if (!response.ok) {
-            throw new Error(registerResponse.message)
+            throw new Error(responseGiven.message)
         }
-        console.log(registerResponse)
+        console.log(responseGiven)
         } catch (err) {
             console.log(err)
             setError(err.message || "An error is you")
