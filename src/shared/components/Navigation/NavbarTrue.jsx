@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { FaSignInAlt, FaSignOutAlt, FaUser} from 'react-icons/fa'
 import './NavbarTrue.css'
 import Header from './Header'
 import MobileNav from './MobileNav'
 import Backdrop from '../UIComponents/Backdrop'
+// import { loggedIn } from '../../context.js/loggedIn'
 
 const NavbarTrue = props => {
+    // const authentication = useContext(loggedIn)
     const [sideNavIsOpen, setSideOpen] = useState(false);
 
     const openSideNav = () => {
@@ -59,15 +61,20 @@ const NavbarTrue = props => {
                             </a>
                         </li>
                        
+                       {/* {!authentication.isLoggedIn && ( */}
                         <li className="li-user">
                         <a href="/register"><FaUser /> Register</a>
                         </li>
+                        {/* )} */}
 
+                       {/* {authentication.isLoggedIn && (  */}
                         <li className="li-user" >
                         <a href="/logout">
                                 <FaSignOutAlt /> Logout
                             </a>
-                        </li>
+                        </li> 
+                        {/* )} */}
+
                         <li className="header-mobile">
                             <h1>Field</h1>
                         </li>

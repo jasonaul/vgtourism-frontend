@@ -17,7 +17,7 @@ const UserDest = props => {
                 </div>
                 <div className="user-info_info">
                     <h2>{props.name}</h2>
-                    <h3>{props.destinations} {props.destinations === 1 ? 'Destination' : 'Destinations'} </h3>
+                    <h3>{props.destinationCount} {props.destinationCount === 1 ? 'Destination' : 'Destinations'} </h3>
                 </div>
                 </Link>
                 </Card>

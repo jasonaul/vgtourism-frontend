@@ -37,7 +37,7 @@ const AllUsers = props => {
            id={user.id} 
            image={user.image} 
            name={user.name} 
-           destinationCount={user.destinations} 
+           destinationCount={user.destinations.length} 
            />
        ))}
    </ul>
