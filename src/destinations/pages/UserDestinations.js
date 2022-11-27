@@ -36,11 +36,35 @@ const UserDestinations = () => {
     </>
 )};
 
-export const SingleDestinationDisplay = () => {
-    const destID = useParams().destID;
-    const loadedDestinations = loadedDestinations.filter(destination => destination.id === destID);
-    return <SingleDestination items={loadedDestinations}/>
-}
+// export const SingleDestinationDisplay = () => {
+//     const destID = useParams().destID;
+//     const loadedDestinations = DUMMY_DESTINATIONS.filter(destination => destination.id === destID);
+//     return <SingleDestination items={loadedDestinations}/>
+// }
+
+// export const SingleDestinationDisplay = () => {
+
+//     const [loadedDestinations, setLoadedDestinations] = useState();
+//     const {isLoading, error, requestSender, errorClearer} = useHttp();
+//     const destID = useParams().destID;
+//     useEffect(() => {
+//         const fetchDestinations = async () => {
+//             try {
+//                 const responses = await requestSender(`http://localhost:8080/api/destinations/user/${destID}`)
+//                 setLoadedDestinations(responses.destinations)
+
+//             } catch (err) {}
+//         };
+//         fetchDestinations();
+       
+//     }, [requestSender, destID])
+
+//     return <SingleDestination items={loadedDestinations}/>
+
+    // const destID = useParams().destID;
+    // // const loadedDestinations = DUMMY_DESTINATIONS.filter(destination => destination.id === destID);
+    // return <SingleDestination items={loadedDestinations.id}/>
+// }
 
 export default UserDestinations
 

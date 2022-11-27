@@ -63,7 +63,7 @@ const DestinationItem = props => {
         </div>
         <div className="destination-item-actions">
             <Button inverse onClick={openMapHandler}>View on Map</Button>
-            <Button to={`/destinations/${props.id}`}>Edit Information</Button>
+            <Button to={`/destinations/${props.id}/edit`}>Edit Information</Button>
             <Button danger onClick={showDeleteWarning}>Delete</Button>
         </div>
     </Card>

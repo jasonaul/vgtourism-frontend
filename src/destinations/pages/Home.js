@@ -5,10 +5,12 @@ function Home () {
     return (<>
 
 <div className="home-hero">
-    <img src="https://i.imgur.com/bZf8wCf.jpeg" alt="Ezio's Dive" className="image-background"></img>
-    <h1>Travel The Games</h1>
-
+    <img src="https://i.imgur.com/Z0HXNPs.jpg" alt="Ezio's Dive" className="image-background"></img>
+    <h1>Video Game Tourism</h1>
+        <h3>Travel the games you love.</h3>
+        <p>Video Game Tourism is your ultimate travel and gaming guide, crafted to inspire your next adventure both in-game and around the world. Visit the places that inspired your favorite game, tour beautiful and hidden in-game destinations, or find a real-world gaming experience.</p>
 </div>
+
 
         
     </>)

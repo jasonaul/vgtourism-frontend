@@ -12,6 +12,7 @@ import Navbar from './shared/components/Navigation/Navbar'
 import NavbarTrue from './shared/components/Navigation/NavbarTrue'
 import { SingleDestinationDisplay } from './destinations/pages/UserDestinations'
 import UpdateDestination from './destinations/pages/UpdateDestination'
+import OneDest from './destinations/pages/OneDest'
 
 function App() {
   // const [isLoggedIn, setLoggedIn] = useState(false);
@@ -41,7 +42,7 @@ function App() {
     </Route>
 
     <Route path="/destinations/:destID" exact>
-      <SingleDestinationDisplay />
+      <OneDest />
     </Route>
 
     <Route path="/:userID/destinations" exact>
