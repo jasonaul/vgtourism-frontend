@@ -47,6 +47,7 @@ const SingleDestination = props => {
                 ingameimg1={destination.ingameimg1} 
                 ingameimg2={destination.ingameimg2} 
                 ingameimg3={destination.ingameimg3}
+                onDelete={props.onDeleteDestination}
                 />
             )}
     </ul>

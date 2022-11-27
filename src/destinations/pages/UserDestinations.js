@@ -24,6 +24,10 @@ const UserDestinations = () => {
         fetchDestinations();
        
     }, [requestSender, userID])
+
+    const deletHandler = deletedDestinationID => {
+        setLoadedDestinations(lastDestinations => lastDestinations.filter(destination => destination.id !== deletedDestinationID))
+    }
     return (
     <>
     <ErrorMode error={error} onClear={errorClearer} />
@@ -32,7 +36,7 @@ const UserDestinations = () => {
             <Spinner />
         </div>
     )}
-    {!isLoading && loadedDestinations && <DestinationList items={loadedDestinations}/>}
+    {!isLoading && loadedDestinations && <DestinationList items={loadedDestinations} onDeletePlace={deletHandler}/>}
     </>
 )};
 

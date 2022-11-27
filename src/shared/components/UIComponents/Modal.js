@@ -11,7 +11,7 @@ const Overlay = props => {
         <header className={`modal-header ${props.headerClass}`}>
             <h2>{props.header}</h2>
         </header>
-        <form onSubmit={props.onSubmit ? props.OnSubmit : (event) => event.preventDefaul()}>
+        <form onSubmit={props.onSubmit ? props.OnSubmit : (event) => event.preventDefault()}>
             <div className={`modal-content ${props.contentClass}`}>
                 {props.children}
                 {/* Props children renders whatever is between tags of the jsx element. Yay! */}

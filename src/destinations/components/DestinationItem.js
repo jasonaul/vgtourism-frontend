@@ -1,13 +1,19 @@
 import React, {useState} from "react";
+import { useHistory } from "react-router-dom";
 import './DestinationItem.css'
 import Card from "../../shared/components/UIComponents/Card";
 import Button from "../../shared/components/FormElements/Button";
 import Modal from "../../shared/components/UIComponents/Modal";
 import Map from "../../shared/components/UIComponents/Map";
+import ErrorMode from "../../shared/components/UIComponents/Error";
+import Spinner from "../../shared/components/UIComponents/Spinner";
+import { useHttp } from "../../shared/hooks/http";
 
 const DestinationItem = props => {
+    const {isLoading, error, requestSender, errorClearer} = useHttp();
     const [showMap, setShowMap] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false);
+    const history = useHistory();
 
     const openMapHandler = () => setShowMap(true);
     const closeMapHandler = () => setShowMap (false)
@@ -20,13 +26,20 @@ const DestinationItem = props => {
         setDeleteModal(false);
     }
 
-    const deletionConfirmation = () => {
+    const deletionConfirmation = async () => {
         setDeleteModal(false);
-        console.log("Item deleted")
+        try {
+            await requestSender(`http://localhost:8080/api/destinations/${props.id}`, 'DELETE');
+            props.onDelete(props.id)
+            // history.push(`/users`)
+        } catch (err) {}
+        
+
     }
 
     return (
         <React.Fragment>
+        <ErrorMode error={error} onClear={errorClearer} />
             <Modal 
                 show={showMap} 
                 onCancel={closeMapHandler} 
@@ -53,6 +66,7 @@ const DestinationItem = props => {
         <li className="destination-item">
     
     <Card className="destination-item-content">
+    {isLoading && <Spinner asOverlay />}
         <div className="destination-item-image">
             <img src={props.ingameimg1} alt={props.title} />
         </div>
