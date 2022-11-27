@@ -1,0 +1,58 @@
+
+.home-hero {
+    padding: 72px 20px 136px;
+}
+
+.home-hero .image-background {
+    height: auto;
+    min-height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    
+}
+
+h1 {
+    font-size: 4.0625rem;
+    line-height: 4.375rem;
+    letter-spacing: -.03em;
+}
+
+.home-hero h1 {
+    color: #fff;
+    font-size: 48px;
+    z-index: 10;
+    position: relative;
+}
+
+h1, h2, h3, h4, h6 {
+    font-family: PlayfairDisplay-Bold,serif;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+@media screen and (min-width: 1120px){
+    .home-hero {
+        max-width: 70%;
+    }
+    h1 {
+        font-size: 8.5rem;
+        line-height: 8rem;
+    }
+}
+
+@media screen and (min-width: 800){
+    .home-hero {
+        padding: 104px 144px 11.5rem;
+    }
+    h1 {
+        font-size: 6rem;
+        line-height: 5rem;
+    }
+}

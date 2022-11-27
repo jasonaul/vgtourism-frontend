@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
 
-
+import Home from './destinations/pages/Home'
 import UsersPage from './user/pages/Users'
 import Login from './user/pages/Login'
 import Register from './user/pages/Register'
@@ -31,6 +31,10 @@ function App() {
   <NavbarTrue />
 <main>
 <Switch>
+
+    <Route path="/" exact>
+      <Home />
+    </Route>
 
     <Route path="/users" exact>
       <UsersPage />
