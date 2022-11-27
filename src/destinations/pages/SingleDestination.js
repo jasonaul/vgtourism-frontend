@@ -11,7 +11,7 @@ const SingleDestination = props => {
         <div className="destination-list aligned">
             <Card>
                 <h2>You haven't added any destinations yet!</h2>
-                <button>Add a New Destination</button>
+                <button to="/new">Add a New Destination</button>
             </Card>
 
         </div>

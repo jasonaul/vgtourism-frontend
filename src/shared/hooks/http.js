@@ -18,17 +18,18 @@ export const useHttp = () => {
             headers,
             signal: abortHttp.signal
         })
-            const responseGiven = await response.json();
+            const responses = await response.json();
             activeRequests.current = activeRequests.current.filter(
-                ctrlReq => ctrlReq !== abortHttp
-            )
+                ctrl => ctrl !== abortHttp
+            );
             if (!response.ok) {
-                throw new Error(responseGiven.message)
+                throw new Error(responses.message)
             }
             setIsLoading(false)
-            return responseGiven
+            return responses
         } catch (err) {
         setError(err.message);
+        setIsLoading(false);
         throw err;
     }
     // setIsLoading(false)
@@ -42,7 +43,7 @@ export const useHttp = () => {
         return () => {
             activeRequests.current.forEach(abortHttp => abortHttp.abort())
         };
-    }, [])
+    }, []);
 
-    return {isLoading, error, requestSender, errorClearer}   
-}
+    return {isLoading, error, requestSender, errorClearer}   ;
+};

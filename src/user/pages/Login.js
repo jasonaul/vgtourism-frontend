@@ -15,8 +15,9 @@ import {useLocation, Redirect} from 'react-router-dom'
 
 const Login = () => {
     const auth = useContext(LoggedIn);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState();
+    // const [isLoading, setIsLoading] = useState(false);
+    // const [error, setError] = useState();
+    const {isLoading, error, requestSender, errorClearer} = useHttp();
     const [formState, inputHandler] = useFormHook({
         email: {
             value: '',
@@ -30,51 +31,69 @@ const Login = () => {
 
     const loginSubmitter = async event => {
         event.preventDefault();
-        setIsLoading(true);
+        // setIsLoading(true);
 
-        try {
-            const response = await fetch('http://localhost:8080/api/users/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email: formState.inputs.email.value,
-                password: formState.inputs.password.value
-            })
-        });
+            try {
+                const responses = await requestSender(
+                    'http://localhost:8080/api/users/login', 'POST',
+                    JSON.stringify({
+                        email: formState.inputs.email.value,
+                        password: formState.inputs.password.value
+                    }),
+                    {
+                        'Content-Type': 'application/json'
+                    }
+                );
+                auth.login(responses.userID, responses.token)
+                console.log(responses)
+            } catch (err) {}
 
-        const responseGiven = await response.json();
-        if (!response.ok) {
-            throw new Error(responseGiven.message)
-        }
-        setIsLoading(false)
-        auth.login();
-        console.log(responseGiven)
 
-        if (response.ok) {
-            <Redirect
-                to={{
-                    pathname: "/users",
-                }}
-/>
-        }
+    }
+
+//         try {
+//             const response = await fetch('http://localhost:8080/api/users/login', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify({
+//                 email: formState.inputs.email.value,
+//                 password: formState.inputs.password.value
+//             })
+//         });
+
+//         const responseGiven = await response.json();
+//         if (!response.ok) {
+//             throw new Error(responseGiven.message)
+//         }
+//         setIsLoading(false)
+//         auth.login();
+
+
+//         if (response.ok) {
+//             <Redirect
+//                 to={{
+//                     pathname: "/users",
+//                 }}
+// />
+//         }
         
-        } catch (err) {
-            setIsLoading(false)
-            setError(err.message || "An error is you.")
-        }
+//         } catch (err) {
+//             setIsLoading(false)
+//             setError(err.message || "An error is you.")
+//         }
         
                 
-    }
+//     }
 
-    const handleError = () => {
-        setError(null);
-    }
+//     const handleError = () => {
+//         setError(null);
+//     }
 
     return (
         <>
-    <ErrorMode error={error} onClear={handleError}/>
+    <ErrorMode error={error} onClear={errorClearer}/>
     { isLoading && <Spinner asOverlay/>}
 
     <h2>Login to Your Account</h2>

@@ -16,9 +16,8 @@ const UserDestinations = () => {
     useEffect(() => {
         const fetchDestinations = async () => {
             try {
-                const responses = await requestSender(`http://localhost:8080/api/destinations/user/${userID}`)
+                const responses = await requestSender(`http://localhost:8080/api/destinations/user/${userID}`);
                 setLoadedDestinations(responses.destinations)
-
             } catch (err) {}
         };
         fetchDestinations();
@@ -36,7 +35,8 @@ const UserDestinations = () => {
             <Spinner />
         </div>
     )}
-    {!isLoading && loadedDestinations && <DestinationList items={loadedDestinations} onDeletePlace={deletHandler}/>}
+    {!isLoading && loadedDestinations && 
+        (<DestinationList items={loadedDestinations} onDeletePlace={deletHandler}/>)}
     </>
 )};
 

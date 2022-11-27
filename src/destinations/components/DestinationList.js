@@ -6,19 +6,18 @@ import DestinationItem from "./DestinationItem";
 // import { FaPlaceOfWorship } from "react-icons/fa";
 
 const DestinationList = props => {
-    if (props.items.length === 0) {
+    // if (props.items.length === 0) {
         return (
-        
+            <React.Fragment>
         <div className="destination-list aligned">
             <Card>
-                <h2>You haven't added any destinations yet!</h2>
+                <h2>Add a New Destination!</h2>
                 <Button to="/new">Add a New Destination</Button>
             </Card>
 
         </div>
-    )}
-
-    return <ul className="destination-list">
+        <div>
+        <ul className="destination-list">
         {props.items.map(destination => 
             <DestinationItem 
                 key={destination.id} 
@@ -52,6 +51,12 @@ const DestinationList = props => {
             )}
     </ul>
 
-};
+
+        </div></React.Fragment>
+    );};
+
+// }
+
+     
 
 export default DestinationList

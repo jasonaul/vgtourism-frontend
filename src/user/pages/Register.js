@@ -8,11 +8,13 @@ import useFormHook from '../../shared/hooks/form';
 import { LoggedIn } from '../../shared/context.js/loggedIn';
 import ErrorMode from '../../shared/components/UIComponents/Error';
 import Spinner from '../../shared/components/UIComponents/Spinner';
+import { useHttp } from '../../shared/hooks/http';
 
 const Register = () => {
     const auth = useContext(LoggedIn);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState();
+    // const [isLoading, setIsLoading] = useState(false);
+    // const [error, setError] = useState();
+    const {isLoading, error, requestSender, errorClearer} = useHttp();
     const [formState, inputHandler] = useFormHook({
         name: {
             value: '',
@@ -30,39 +32,58 @@ const Register = () => {
 
     const registerSubmitter = async event => {
         event.preventDefault();
+
         try {
-            setIsLoading(true);
-            
-            const response = await fetch('http://localhost:8080/api/users/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name: formState.inputs.name.value,
-                email: formState.inputs.email.value,
-                password: formState.inputs.password.value
-            })
-        });
-        const responseGiven = await response.json();
-        if (!response.ok) {
-            throw new Error(responseGiven.message)
-        }
-        console.log(responseGiven)
+            const responses = await requestSender(
+                'http://localhost:8080/api/users/register', 'POST',
+                JSON.stringify({
+                    name: formState.inputs.name.value,
+                    email: formState.inputs.email.value,
+                    password: formState.inputs.password.value
+                }),
+                {
+                    'Content-Type': 'application/json'
+                }
+            );
+            auth.login(responses.userID, responses.token)
         } catch (err) {
-            console.log(err)
-            setError(err.message || "An error is you")
+            
         }
-        setIsLoading(false);
     }
 
-    const handleError = () => {
-        setError(null);
-    }
+    //     try {
+    //         setIsLoading(true);
+            
+    //         const response = await fetch('http://localhost:8080/api/users/register', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({
+    //             name: formState.inputs.name.value,
+    //             email: formState.inputs.email.value,
+    //             password: formState.inputs.password.value
+    //         })
+    //     });
+    //     const responseGiven = await response.json();
+    //     if (!response.ok) {
+    //         throw new Error(responseGiven.message)
+    //     }
+    //     console.log(responseGiven)
+    //     } catch (err) {
+    //         console.log(err)
+    //         setError(err.message || "An error is you")
+    //     }
+    //     setIsLoading(false);
+    // }
+
+    // const handleError = () => {
+    //     setError(null);
+    // }
 
     return (
         <>
-        <ErrorMode error={error} onClear={handleError}/>
+        <ErrorMode error={error} onClear={errorClearer}/>
         {isLoading && <Spinner asOverlay/>}
             <h2>Create an Account</h2>
             <form onSubmit={registerSubmitter} className='register-form'>
