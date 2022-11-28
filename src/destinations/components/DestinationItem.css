@@ -2,10 +2,14 @@
     margin: 1rem 0;
     columns: 2;
     width: 150%;
-    background-color: yellow;
+    margin-left: 12%;
+    
+
   }
   
   .destination-item-content {
+    
+    margin:auto;
     padding: 5;
   }
   
@@ -55,6 +59,7 @@
 
   .d-item-title {
     font-weight: 900;
+    color: blue;
   }
 
   .d-item-sub {

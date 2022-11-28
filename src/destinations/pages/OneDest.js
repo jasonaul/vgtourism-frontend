@@ -4,13 +4,13 @@ import { useParams } from 'react-router-dom'
 import useFormHook from '../../shared/hooks/form';
 import Spinner from '../../shared/components/UIComponents/Spinner';
 import './UpdateDestination.css'
-import { useHttp } from '../../shared/hooks/http';
+import { useHttpClient } from '../../shared/hooks/http';
 import Map from '../../shared/components/UIComponents/Map';
 import './OneDest.css'
 
 const OneDest = () => {
     // const auth = useContext(LoggedIn)
-    const { isLoading, error, requestSender } = useHttp();
+    const { isLoading, error, sendRequest } = useHttpClient();
     const [loadedDestination, setLoadedDestination] = useState();
     const destID = useParams().destID;
 
@@ -33,7 +33,7 @@ const [ formDataSetter] = useFormHook({
     useEffect(() => {
         const fetchDestination = async () => {
         try {
-            const responses = await requestSender(`http://localhost:8080/api/destinations/${destID}`);
+            const responses = await sendRequest(`http://localhost:5001/api/destinations/${destID}`);
             setLoadedDestination(responses.destination)
             formDataSetter(
                 {
@@ -57,14 +57,14 @@ const [ formDataSetter] = useFormHook({
                 true);
             } catch (err) {}
         } ;   fetchDestination();
-             }, [requestSender, destID, formDataSetter])
+             }, [sendRequest, destID, formDataSetter])
     
 
 // const updateSubmitHandler = async event => {
 //     event.preventDefault();
     
 //     try {
-//         await requestSender(
+//         await sendRequest(
 //             `http://localhost:5000/api/destinations/${destID}`, 'PATCH',
 //             JSON.stringify({
 //                 destinationName: formState.inputs.destinationName.value,

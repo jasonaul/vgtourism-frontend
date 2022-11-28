@@ -33,7 +33,7 @@ const Login = () => {
 
 
         try {
-            const response = await requestSender('http://localhost:8080/api/users/login', 'POST', JSON.stringify({
+            const response = await requestSender('http://localhost:5001/api/users/login', 'POST', JSON.stringify({
             email: formState.inputs.email.value,
             password: formState.inputs.password.value
         }),

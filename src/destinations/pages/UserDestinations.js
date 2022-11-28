@@ -5,31 +5,31 @@ import DestinationList from "../components/DestinationList";
 import SingleDestination from "./SingleDestination";
 import ErrorMode from "../../shared/components/UIComponents/Error";
 import Spinner from "../../shared/components/UIComponents/Spinner";
-import { useHttp } from "../../shared/hooks/http";
+import { useHttpClient } from "../../shared/hooks/http";
 
 // 
 
 const UserDestinations = () => {
     const [loadedDestinations, setLoadedDestinations] = useState();
-    const {isLoading, error, requestSender, errorClearer} = useHttp();
+    const {isLoading, error, sendRequest, clearError} = useHttpClient();
     const userID = useParams().userID;
     useEffect(() => {
         const fetchDestinations = async () => {
             try {
-                const responses = await requestSender(`http://localhost:8080/api/destinations/user/${userID}`);
+                const responses = await sendRequest(`http://localhost:5001/api/destinations/user/${userID}`);
                 setLoadedDestinations(responses.destinations)
             } catch (err) {}
         };
         fetchDestinations();
        
-    }, [requestSender, userID])
+    }, [sendRequest, userID])
 
     const deletHandler = deletedDestinationID => {
         setLoadedDestinations(lastDestinations => lastDestinations.filter(destination => destination.id !== deletedDestinationID))
     }
     return (
     <>
-    <ErrorMode error={error} onClear={errorClearer} />
+    <ErrorMode error={error} onClear={clearError} />
     {isLoading && (
         <div className="center">
             <Spinner />
@@ -49,19 +49,19 @@ const UserDestinations = () => {
 // export const SingleDestinationDisplay = () => {
 
 //     const [loadedDestinations, setLoadedDestinations] = useState();
-//     const {isLoading, error, requestSender, errorClearer} = useHttp();
+//     const {isLoading, error, sendRequest, clearError} = useHttp();
 //     const destID = useParams().destID;
 //     useEffect(() => {
 //         const fetchDestinations = async () => {
 //             try {
-//                 const responses = await requestSender(`http://localhost:8080/api/destinations/user/${destID}`)
+//                 const responses = await sendRequest(`http://localhost:5001/api/destinations/user/${destID}`)
 //                 setLoadedDestinations(responses.destinations)
 
 //             } catch (err) {}
 //         };
 //         fetchDestinations();
        
-//     }, [requestSender, destID])
+//     }, [sendRequest, destID])
 
 //     return <SingleDestination items={loadedDestinations}/>
 

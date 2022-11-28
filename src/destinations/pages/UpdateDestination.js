@@ -8,13 +8,13 @@ import Spinner from '../../shared/components/UIComponents/Spinner';
 import ErrorMode from '../../shared/components/UIComponents/Error';
 import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from '../../shared/util/validators';
 import './UpdateDestination.css'
-import { useHttp } from '../../shared/hooks/http';
+import { useHttpClient } from '../../shared/hooks/http';
 import { LoggedIn } from '../../shared/context/loggedIn';
 
 
 const UpdateDestination = () => {
     const auth = useContext(LoggedIn)
-    const { isLoading, error, requestSender, errorClearer } = useHttp();
+    const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const [loadedDestination, setLoadedDestination] = useState();
     const destID = useParams().destID;
     const history = useHistory();
@@ -41,7 +41,7 @@ const [formState, formHook, formDataSetter] = useFormHook({
     useEffect(() => {
         const fetchDestination = async () => {
         try {
-            const responses = await requestSender(`http://localhost:8080/api/destinations/${destID}`);
+            const responses = await sendRequest(`http://localhost:5001/api/destinations/${destID}`);
             setLoadedDestination(responses.destination)
             formDataSetter(
                 {
@@ -65,14 +65,14 @@ const [formState, formHook, formDataSetter] = useFormHook({
                 true);
             } catch (err) {}
         } ;   fetchDestination();
-             }, [requestSender, destID, formDataSetter])
+             }, [sendRequest, destID, formDataSetter])
     
 
 const updateSubmitHandler = async event => {
     event.preventDefault();
     try {
-        await requestSender(
-            `http://localhost:8080/api/destinations/${destID}`, 'PATCH',
+        await sendRequest(
+            `http://localhost:5001/api/destinations/${destID}`, 'PATCH',
             JSON.stringify({
                 destinationName: formState.inputs.destinationName.value,
                 headline: formState.inputs.headline.value,
@@ -106,7 +106,7 @@ const updateSubmitHandler = async event => {
 
     return (
         <>
-        <ErrorMode error={error} onClear={errorClearer} />
+        <ErrorMode error={error} onClear={clearError} />
        {!isLoading && loadedDestination &&  <form className='register-form' onSubmit={updateSubmitHandler}>
     <Input 
         id="destinationName" 

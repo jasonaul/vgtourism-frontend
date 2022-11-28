@@ -10,12 +10,12 @@ import Input from '../../shared/components/FormElements/Input'
 import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH, } from '../../shared/util/validators'
     //Use the validator require in the fields which are required by the user before submission of data.
 import Button from '../../shared/components/FormElements/Button'
-import { useHttp } from '../../shared/hooks/http'
+import { useHttpClient } from '../../shared/hooks/http'
 import { LoggedIn } from '../../shared/context/loggedIn'
 
 function NewDestination() {
     const auth = useContext(LoggedIn)
-    const {isLoading, error, requestSender, errorClearer} = useHttp();
+    const {isLoading, error, sendRequest, clearError} = useHttpClient();
     const [formState, formHandler] = useFormHook(
         {
             destinationName: {
@@ -65,10 +65,11 @@ function NewDestination() {
         formData.append('series', formState.inputs.series.value);
         formData.append('city', formState.inputs.city.value);
         formData.append('country', formState.inputs.country.value);
-        // formData.append('creator', auth.userID)
-        await requestSender('http://localhost:8080/api/destinations', 'POST', formData, {
+        formData.append('creator', auth.userID)
+        console.log(formData)
+        await sendRequest('http://localhost:5001/api/destinations', 'POST', formData, {
             Authorization: 'Bearer ' + auth.token
-        })
+          });
         history.push('/')
     } catch (err) {
         
@@ -78,7 +79,7 @@ function NewDestination() {
 
     return(
         <>
-        <ErrorMode error={error} onClear={errorClearer} />
+        <ErrorMode error={error} onClear={clearError} />
         <div className="headline-lead">
             <p>Enter Information for a New Destination</p>
         </div>

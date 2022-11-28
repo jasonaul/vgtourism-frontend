@@ -7,12 +7,12 @@ import Modal from "../../shared/components/UIComponents/Modal";
 import Map from "../../shared/components/UIComponents/Map";
 import ErrorMode from "../../shared/components/UIComponents/Error";
 import Spinner from "../../shared/components/UIComponents/Spinner";
-import { useHttp } from "../../shared/hooks/http";
+import { useHttpClient } from "../../shared/hooks/http";
 import { LoggedIn } from "../../shared/context/loggedIn";
 
 const DestinationItem = props => {
     const auth = useContext(LoggedIn)
-    const {isLoading, error, requestSender, errorClearer} = useHttp();
+    const {isLoading, error, sendRequest, clearError} = useHttpClient();
     const [showMap, setShowMap] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false);
     const history = useHistory();
@@ -31,7 +31,7 @@ const DestinationItem = props => {
     const deletionConfirmation = async () => {
         setDeleteModal(false);
         try {
-            await requestSender(`http://localhost:8080/api/destinations/${props.id}`, 'DELETE',
+            await sendRequest(`http://localhost:5001/api/destinations/${props.id}`, 'DELETE',
             null,
             {
                 Authorization: 'Bearer ' + auth.token
@@ -45,7 +45,7 @@ const DestinationItem = props => {
 
     return (
         <React.Fragment>
-        <ErrorMode error={error} onClear={errorClearer} />
+        <ErrorMode error={error} onClear={clearError} />
             <Modal 
                 show={showMap} 
                 onCancel={closeMapHandler} 
@@ -74,10 +74,10 @@ const DestinationItem = props => {
     <Card className="destination-item-content">
     {isLoading && <Spinner asOverlay />}
         <div className="destination-item-image">
-            <img src={props.ingameimg1} alt={props.title} />
+            <a href={`/destinations/${props.id}`}><img src={props.ingameimg1} alt={props.title}/></a>
         </div>
         <div className="destination-item-info">
-            <h2 className="d-item-title">{props.destinationName}</h2>
+            <a className="d-item-title" href={`/destinations/${props.id}`}>{props.destinationName}</a>
             <h3 className="d-item-sub">{props.game}</h3>
             <p className="d-item-description">{props.headline}</p>
         </div>

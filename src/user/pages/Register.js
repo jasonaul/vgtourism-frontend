@@ -8,13 +8,13 @@ import useFormHook from '../../shared/hooks/form';
 import { LoggedIn } from '../../shared/context/loggedIn';
 import ErrorMode from '../../shared/components/UIComponents/Error';
 import Spinner from '../../shared/components/UIComponents/Spinner';
-import { useHttp } from '../../shared/hooks/http';
+import { useHttpClient } from '../../shared/hooks/http';
 
 const Register = () => {
     const auth = useContext(LoggedIn);
     // const [isLoading, setIsLoading] = useState(false);
     // const [error, setError] = useState();
-    const {isLoading, error, requestSender, errorClearer} = useHttp();
+    const {isLoading, error, sendRequest, clearError} = useHttpClient();
     const [formState, inputHandler] = useFormHook({
         name: {
             value: '',
@@ -34,8 +34,8 @@ const Register = () => {
         event.preventDefault();
 
         try {
-            const responses = await requestSender(
-                'http://localhost:8080/api/users/register', 'POST',
+            const responses = await sendRequest(
+                'http://localhost:5001/api/users/register', 'POST',
                 JSON.stringify({
                     name: formState.inputs.name.value,
                     email: formState.inputs.email.value,
@@ -54,7 +54,7 @@ const Register = () => {
     //     try {
     //         setIsLoading(true);
             
-    //         const response = await fetch('http://localhost:8080/api/users/register', {
+    //         const response = await fetch('http://localhost:5001/api/users/register', {
     //         method: 'POST',
     //         headers: {
     //             'Content-Type': 'application/json'
@@ -83,7 +83,7 @@ const Register = () => {
 
     return (
         <>
-        <ErrorMode error={error} onClear={errorClearer}/>
+        <ErrorMode error={error} onClear={clearError}/>
         {isLoading && <Spinner asOverlay/>}
             <h2>Create an Account</h2>
             <form onSubmit={registerSubmitter} className='register-form'>

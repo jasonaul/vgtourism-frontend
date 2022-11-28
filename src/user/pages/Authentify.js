@@ -5,7 +5,7 @@ import Spinner from "../../shared/components/UIComponents/Spinner";
 import ErrorMode from "../../shared/components/UIComponents/Error";
 import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "../../shared/util/validators";
 import useFormHook from "../../shared/hooks/form";
-import { useHttp } from "../../shared/hooks/http";
+import { useHttpClient } from "../../shared/hooks/http";
 import { LoggedIn } from "../../shared/context/loggedIn";
 import './Register.css'
 import Card from "../../shared/components/UIComponents/Card";
@@ -13,7 +13,7 @@ import Card from "../../shared/components/UIComponents/Card";
 const Authentify = () => {
     const auth = useContext(LoggedIn);
     const [isLoginMode, setIsLoginMode] = useState(true);
-    const {isLoading, error, requestSender, errorClearer} = useHttp();
+    const {isLoading, error, sendRequest, clearError} = useHttpClient();
 
     const [formState, inputHandler, dataSetter] = useFormHook(
         {
@@ -63,8 +63,8 @@ const Authentify = () => {
         // setIsLoading(true);
         if (isLoginMode) {
         try {
-            const responseInfo = await requestSender(
-                'http://localhost:8080/api/users/login', 'POST',
+            const responseInfo = await sendRequest(
+                'http://localhost:5001/api/users/login', 'POST',
                 JSON.stringify({
                     email: formState.inputs.email.value,
                     password: formState.inputs.password.value
@@ -78,8 +78,8 @@ const Authentify = () => {
         } catch (err) {}
     } else {
         try {
-            const responseInfo = await requestSender(
-                'http://localhost:8080/api/users/register', 'POST',
+            const responseInfo = await sendRequest(
+                'http://localhost:5001/api/users/register', 'POST',
                 JSON.stringify({
                     name: formState.inputs.name.value,
                     email: formState.inputs.email.value,
@@ -99,7 +99,7 @@ const Authentify = () => {
 
     return (
         <React.Fragment>
-      <ErrorMode error={error} onClear={errorClearer} />
+      <ErrorMode error={error} onClear={clearError} />
       <Card className="authentication">
         {isLoading && <Spinner asOverlay />}
         <h2>Login Required</h2>

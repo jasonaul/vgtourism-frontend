@@ -2,28 +2,28 @@ import React, { useState, useEffect} from 'react';
 import ErrorMode from '../../shared/components/UIComponents/Error';
 import Spinner from '../../shared/components/UIComponents/Spinner';
 import AllUsers from '../components/AllUsers';
-import { useHttp } from '../../shared/hooks/http';
+import { useHttpClient } from '../../shared/hooks/http';
 
 function UsersPage () {
 
-    const {isLoading, error, requestSender, errorClearer} = useHttp();
+    const {isLoading, error, sendRequest, clearError} = useHttpClient();
     const [loadedUsers, setLoadedUsers] = useState();
 
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const responseInfo = await requestSender('http://localhost:8080/api/users');
+                const responseInfo = await sendRequest('http://localhost:5001/api/users');
                 setLoadedUsers(responseInfo.users);
             } catch (err) {
                 
             }
         };
         fetchUsers();
-    }, [requestSender]);
+    }, [sendRequest]);
 
     return (
         <>
-            <ErrorMode error={error} onClear={errorClearer} />
+            <ErrorMode error={error} onClear={clearError} />
             {isLoading && (
                 <div className='center'>
                     <Spinner />
@@ -37,10 +37,10 @@ function UsersPage () {
     // const [error, setError] = useState(false);
     // const [usersLoaded, setUsersLoaded] = useState(false);
     // useEffect(() => {
-    //     const requestSender = async () => {
+    //     const sendRequest = async () => {
     //         setIsLoading(true);
     //         try {
-    //             const response = await fetch('http://localhost:8080/api/users')
+    //             const response = await fetch('http://localhost:5001/api/users')
 
     //             const responseData = await response.json();
 
@@ -55,7 +55,7 @@ function UsersPage () {
     //         }
     //         setIsLoading(false);
     //     }
-    //    requestSender();
+    //    sendRequest();
     // }, [])
 
     // const errorHandler = () => {

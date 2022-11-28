@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-do
 
 import Home from './destinations/pages/Home'
 import UsersPage from './user/pages/Users'
+import AllDestinations from './destinations/pages/AllDestinations'
 import Login from './user/pages/Login'
 import Register from './user/pages/Register'
 import Authentify from './user/pages/Authentify'
@@ -62,6 +63,30 @@ const App = () => {
         <Route path="/destinations/:destID/edit" exact>
           <UpdateDestination />
         </Route>
+
+        <Route path="/users" exact>
+          <UsersPage />
+        </Route>
+ 
+        <Route path="/destinations/:destID" exact>
+          <OneDest />
+        </Route>
+ 
+        <Route path="/:userID/destinations" exact>
+          <UserDestinations />
+        </Route>
+
+        <Route path="/login" exact>
+          <Authentify />
+        </Route>
+
+      <Route path="/register" exact>
+        <Authentify />
+      </Route>
+
+      <Route path="/">
+        <Home />
+      </Route>
 
       </Switch>
     )
