@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react'
 import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH } from '../../shared/util/validators'
 import Input from '../../shared/components/FormElements/Input';
-import { LoggedIn } from '../../shared/context.js/loggedIn';
+import { LoggedIn } from '../../shared/context/loggedIn';
 import { useHttp } from '../../shared/hooks/http';
 // import { useParams } from 'react-router-dom';
 import Button from '../../shared/components/FormElements/Button';
@@ -45,7 +45,7 @@ const Login = () => {
                     }
                 );
                 auth.login(responses.userID, responses.token)
-                console.log(responses)
+                // console.log(responses)
             } catch (err) {}
 
 

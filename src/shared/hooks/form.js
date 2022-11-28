@@ -6,18 +6,21 @@ const reducerForForm = (state, action) => {
     switch (action.type) {
         case 'INPUT_CHANGE':
             let validForm = true;
-            for (const input in state.inputs) {
-                if (input === action.input) {
+            for (const inputID in state.inputs) {
+                if(!state.inputs[inputID]){
+                    continue;
+                }
+                if (inputID === action.inputID) {
                     validForm = validForm && action.isValid;
                 } else {
-                    validForm = validForm && state.inputs[input].isValid;
+                    validForm = validForm && state.inputs[inputID].isValid;
                 }
             }
             return {
                 ...state,
                 inputs: {
                     ...state.inputs,
-                    [action.input]: {value: action.value, isValid: action.isValid}
+                    [action.inputID]: {value: action.value, isValid: action.isValid}
                 },
                 isValid: validForm
             };
@@ -35,7 +38,7 @@ const reducerForForm = (state, action) => {
 const useFormHook = (firstInputs, firstValidity) => {
     const [formState, dispatch] = useReducer(reducerForForm, {
         inputs: firstInputs,
-        isValid: false
+        isValid: firstValidity
         // isValid stores info if overall form is Valid. Inputs stores info on the validity of inputs.
             //and this is initial state above.
     });
@@ -45,7 +48,7 @@ const formHandler = useCallback((id, value, isValid) => {
         type: 'INPUT_CHANGE', 
         value: value, 
         isValid: isValid, 
-        input: id
+        inputID: id
     })
 }, []);
 

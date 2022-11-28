@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import Button from '../../shared/components/FormElements/Button';
 import './Login.css'
 import useFormHook from '../../shared/hooks/form';
-import { LoggedIn } from '../../shared/context.js/loggedIn';
+import { LoggedIn } from '../../shared/context/loggedIn';
 import ErrorMode from '../../shared/components/UIComponents/Error';
 import Spinner from '../../shared/components/UIComponents/Spinner';
 import { useHttp } from '../../shared/hooks/http';

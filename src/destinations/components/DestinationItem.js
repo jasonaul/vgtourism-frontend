@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import { useHistory } from "react-router-dom";
 import './DestinationItem.css'
 import Card from "../../shared/components/UIComponents/Card";
@@ -8,8 +8,10 @@ import Map from "../../shared/components/UIComponents/Map";
 import ErrorMode from "../../shared/components/UIComponents/Error";
 import Spinner from "../../shared/components/UIComponents/Spinner";
 import { useHttp } from "../../shared/hooks/http";
+import { LoggedIn } from "../../shared/context/loggedIn";
 
 const DestinationItem = props => {
+    const auth = useContext(LoggedIn)
     const {isLoading, error, requestSender, errorClearer} = useHttp();
     const [showMap, setShowMap] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false);
@@ -29,7 +31,11 @@ const DestinationItem = props => {
     const deletionConfirmation = async () => {
         setDeleteModal(false);
         try {
-            await requestSender(`http://localhost:8080/api/destinations/${props.id}`, 'DELETE');
+            await requestSender(`http://localhost:8080/api/destinations/${props.id}`, 'DELETE',
+            null,
+            {
+                Authorization: 'Bearer ' + auth.token
+            });
             props.onDelete(props.id)
             // history.push(`/users`)
         } catch (err) {}

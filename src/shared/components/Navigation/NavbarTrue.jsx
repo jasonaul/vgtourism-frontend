@@ -4,10 +4,12 @@ import './NavbarTrue.css'
 import Header from './Header'
 import MobileNav from './MobileNav'
 import Backdrop from '../UIComponents/Backdrop'
+import { LoggedIn } from '../../context/loggedIn'
 // import { loggedIn } from '../../context.js/loggedIn'
 
 const NavbarTrue = props => {
     // const authentication = useContext(loggedIn)
+    const auth = useContext(LoggedIn)
     const [sideNavIsOpen, setSideOpen] = useState(false);
 
     const openSideNav = () => {
@@ -69,9 +71,10 @@ const NavbarTrue = props => {
 
                        {/* {authentication.isLoggedIn && (  */}
                         <li className="li-user" >
-                        <a href="/logout">
+                        {/* <a href="/logout">
                                 <FaSignOutAlt /> Logout
-                            </a>
+                            </a> */}
+                            <button onClick={auth.logout}>Logout</button>
                         </li> 
                         {/* )} */}
 

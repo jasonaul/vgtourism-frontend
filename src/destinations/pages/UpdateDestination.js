@@ -9,11 +9,11 @@ import ErrorMode from '../../shared/components/UIComponents/Error';
 import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from '../../shared/util/validators';
 import './UpdateDestination.css'
 import { useHttp } from '../../shared/hooks/http';
-import { LoggedIn } from '../../shared/context.js/loggedIn';
+import { LoggedIn } from '../../shared/context/loggedIn';
 
 
 const UpdateDestination = () => {
-    // const auth = useContext(LoggedIn)
+    const auth = useContext(LoggedIn)
     const { isLoading, error, requestSender, errorClearer } = useHttp();
     const [loadedDestination, setLoadedDestination] = useState();
     const destID = useParams().destID;
@@ -79,7 +79,8 @@ const updateSubmitHandler = async event => {
                 game: formState.inputs.game.value
             }),
             {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + auth.token
             }
         );
         // history.push('/' + auth.userID + '/destinations')

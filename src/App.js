@@ -1,10 +1,11 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
 
 import Home from './destinations/pages/Home'
 import UsersPage from './user/pages/Users'
 import Login from './user/pages/Login'
 import Register from './user/pages/Register'
+import Authentify from './user/pages/Authentify'
 import UserDestinations from './destinations/pages/UserDestinations'
 import NewDestination from './destinations/pages/NewDestination'
 // import { LoggedIn } from './shared/context.js/loggedIn'
@@ -13,24 +14,41 @@ import NavbarTrue from './shared/components/Navigation/NavbarTrue'
 import { SingleDestinationDisplay } from './destinations/pages/UserDestinations'
 import UpdateDestination from './destinations/pages/UpdateDestination'
 import OneDest from './destinations/pages/OneDest'
+import { useAuthentify } from './shared/hooks/authentication'
 import { LoggedIn } from './shared/context/loggedIn'
 
 const App = () => {
-  const [token, setToken] = useState(false);
-  const [userID, setUserID] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [token, setToken] = useState(false);
+  // const [userID, setUserID] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const {token, login, logout, userID} = useAuthentify();
 
-  const login = useCallback((userID, token) => {
-    setToken(token)
-    setUserID(userID)
-    setIsLoggedIn(true);
-  }, []);
 
-  const logout = useCallback(() => {
-    setToken(false)
-    setUserID(null)
-    setIsLoggedIn(false);
-  }, []);
+
+  // const login = useCallback((userID, token) => {
+  //   setToken(token)
+  //   isLoggedIn(true)
+  //   localStorage.setItem('userData', JSON.stringify({
+  //     userID: userID,
+  //     token: token
+  //   }))
+  //   setUserID(userID)
+
+  // }, []);
+
+  // const logout = useCallback(() => {
+  //   setToken(false)
+  //   setUserID(null)
+  //   isLoggedIn(false)
+  //   localStorage.removeItem('userData')
+  // }, []);
+
+  // useEffect(() => {
+  //   const storedData = JSON.parse(localStorage.getItem('userData'));
+  //   if (storedData && storedData.token) {
+  //     login(storedData.userID, storedData.token);
+  //   }
+  // }, [login])
 
   let routes;
 
@@ -64,11 +82,15 @@ const App = () => {
         </Route>
 
         <Route path="/login" exact>
-          <Login />
+          <Authentify />
         </Route>
 
       <Route path="/register" exact>
-        <Register />
+        <Authentify />
+      </Route>
+
+      <Route path="/">
+        <Home />
       </Route>
 
         </Switch>
@@ -81,6 +103,7 @@ return (
     value={{
       isLoggedIn: !!token,
       token: token,
+      userID: userID,
       login: login,
       logout: logout
     }}

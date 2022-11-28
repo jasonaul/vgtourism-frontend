@@ -18,21 +18,20 @@ export const useHttp = () => {
             headers,
             signal: abortHttp.signal
         })
-            const responses = await response.json();
+            const responseInfo = await response.json();
             activeRequests.current = activeRequests.current.filter(
                 ctrl => ctrl !== abortHttp
             );
             if (!response.ok) {
-                throw new Error(responses.message)
+                throw new Error(responseInfo.message)
             }
             setIsLoading(false)
-            return responses
+            return responseInfo
         } catch (err) {
         setError(err.message);
         setIsLoading(false);
         throw err;
     }
-    // setIsLoading(false)
     }, []);
 
     const errorClearer = () => {
