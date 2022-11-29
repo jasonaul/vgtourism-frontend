@@ -9,6 +9,8 @@ import { useHttpClient } from "../../shared/hooks/http";
 import { LoggedIn } from "../../shared/context/loggedIn";
 import './Register.css'
 import Card from "../../shared/components/UIComponents/Card";
+import PopupReact from 'react-popup/dist/Popup.react';
+
 
 const Authentify = () => {
     const auth = useContext(LoggedIn);
@@ -74,6 +76,7 @@ const Authentify = () => {
                 }
             );
             auth.login(responseInfo.userID, responseInfo.token)
+            alert("You have successfully logged in!")
             // console.log(responseInfo)
         } catch (err) {}
     } else {
@@ -90,6 +93,7 @@ const Authentify = () => {
                 }
             );
             auth.login(responseInfo.userID, responseInfo.token)
+            alert("You have successfully registered an account!")
         } catch (err) {
             
         }
@@ -102,7 +106,7 @@ const Authentify = () => {
       <ErrorMode error={error} onClear={clearError} />
       <Card className="authentication">
         {isLoading && <Spinner asOverlay />}
-        <h2>Login Required</h2>
+        <h2>Login OR Register - Click to Switch Between Login and Register</h2>
         <hr />
         <form onSubmit={authSubmitter}>
           {!isLoginMode && (
@@ -116,14 +120,7 @@ const Authentify = () => {
               onInput={inputHandler}
             />
           )}
-          {/* {!isLoginMode && (
-            <ImageUpload
-              center
-              id="image"
-              onInput={inputHandler}
-              errorText="Please provide an image."
-            />
-          )} */}
+
           <Input
             element="input"
             id="email"

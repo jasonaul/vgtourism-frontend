@@ -5,6 +5,7 @@ import Header from './Header'
 import MobileNav from './MobileNav'
 import Backdrop from '../UIComponents/Backdrop'
 import { LoggedIn } from '../../context/loggedIn'
+import Button from '../FormElements/Button'
 // import { loggedIn } from '../../context.js/loggedIn'
 
 const NavbarTrue = props => {
@@ -43,12 +44,13 @@ const NavbarTrue = props => {
             </div>
              */}
             <div className="header-nav-full">
+            <img src="https://imgur.com/tN508po.jpg" alt="VGTourism"></img>
             <div className="header-left main-navigation-header-nav">
                 <nav className="header-main" id="main-nav">
                 
                     <ul className="header-main-list">
                         <li className="li-left">
-                            <a href="/destinations">Destinations</a>
+                            <a href="/users">User Destinations</a>
                         </li>
                         <li className="li-left">
                             <a href="/games">Games</a>
@@ -74,7 +76,7 @@ const NavbarTrue = props => {
                         {/* <a href="/logout">
                                 <FaSignOutAlt /> Logout
                             </a> */}
-                            <button onClick={auth.logout}>Logout</button>
+                            <Button onClick={auth.logout}>Logout</Button>
                         </li> 
                         {/* )} */}
 
