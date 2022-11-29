@@ -35,7 +35,6 @@ const DestinationList = props => {
                 coordinates={destination.coordinates}
                 latitude={destination.latitude}
                 longitude={destination.longitude} 
-                creator={destination.creator}
                 externalsite={destination.externalsite} 
                 headline={destination.headline}
                 description1={destination.description1} 
@@ -47,6 +46,7 @@ const DestinationList = props => {
                 ingameimg1={destination.ingameimg1} 
                 ingameimg2={destination.ingameimg2} 
                 ingameimg3={destination.ingameimg3}
+                creator={destination.creator}
                 />
             )}
     </ul>

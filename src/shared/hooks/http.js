@@ -7,15 +7,16 @@ export const useHttpClient = () => {
   const activeHttpRequests = useRef([]);
 
   const sendRequest = useCallback(
-    async (url, method = 'GET', body = null, headers = {}) => {
+    async (url, method = 'GET', formData = null, headers = {}) => {
       setIsLoading(true);
       const httpAbortCtrl = new AbortController();
       activeHttpRequests.current.push(httpAbortCtrl);
+      console.log('http req ===', formData);
 
       try {
         const response = await fetch(url, {
           method,
-          body,
+          body: formData,
           headers,
           signal: httpAbortCtrl.signal
         });

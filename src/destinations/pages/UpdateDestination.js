@@ -43,6 +43,7 @@ const [formState, formHook, formDataSetter] = useFormHook({
         try {
             const responses = await sendRequest(`http://localhost:5001/api/destinations/${destID}`);
             setLoadedDestination(responses.destination)
+            console.log(formState, responses.destination, loadedDestination);
             formDataSetter(
                 {
                 destinationName: {
@@ -118,7 +119,7 @@ const updateSubmitHandler = async event => {
         onInput={formHook}
         trasnferedValue={loadedDestination.destinationName}
         transferedValid={true}
-        // trasnferedValue={formState.inputs.destinationName.value}
+        // value={loadedDestination.destinationName}
         // transferedValid={formState.inputs.destinationName.isValid}
         />
 

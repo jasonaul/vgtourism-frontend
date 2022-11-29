@@ -17,7 +17,8 @@ const UserDestinations = () => {
         const fetchDestinations = async () => {
             try {
                 const responses = await sendRequest(`http://localhost:5001/api/destinations/user/${userID}`);
-                setLoadedDestinations(responses.destinations)
+                console.log('responses ===', responses);
+                setLoadedDestinations(responses.places)
             } catch (err) {}
         };
         fetchDestinations();

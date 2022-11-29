@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
-
+import { useEffect } from 'react'
 import Home from './destinations/pages/Home'
 import UsersPage from './user/pages/Users'
 // import AllDestinations from './destinations/pages/AllDestinations'
@@ -44,12 +44,12 @@ const App = () => {
   //   localStorage.removeItem('userData')
   // }, []);
 
-  // useEffect(() => {
-  //   const storedData = JSON.parse(localStorage.getItem('userData'));
-  //   if (storedData && storedData.token) {
-  //     login(storedData.userID, storedData.token);
-  //   }
-  // }, [login])
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem('userData'));
+    if (storedData && storedData.token) {
+      login(storedData.userID, storedData.token);
+    }
+  }, [login])
 
   let routes;
 

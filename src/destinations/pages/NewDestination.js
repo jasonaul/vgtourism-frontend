@@ -53,23 +53,63 @@ function NewDestination() {
         
     // }, []);
 
+
+    // const submissionHandler = async event => {
+    //     event.preventDefault();
+    //     try {
+    //         await sendRequest('http://localhost:5001/api/destinations', 'POST', JSON.stringify({
+    //             destinationName: formState.inputs.destinationName.value,
+    //             headline: formState.inputs.headline.value,
+    //             game: formState.inputs.game.value,
+    //             series: formState.inputs.series.value,
+    //             city: formState.inputs.city.value,
+    //             country: formState.inputs.country.value,
+    //             creator: auth.userID
+    //         },     {
+    //             Authorization: 'Bearer ' + auth.token
+    //           }),
+    //         {
+    //             'Content-Type': 'application/json'
+    //         })
+    //     } catch (err) {
+            
+    //     }
+    // }
+
+
+
+
+
     const submissionHandler = async event => {
         event.preventDefault();
             //preventing the default of reloading the page before info can be sent and crashes the session...
 
     try {
-        const formData = new FormData();
-        formData.append('destinationName', formState.inputs.destinationName.value);
-        formData.append('headline', formState.inputs.headline.value);
-        formData.append('game', formState.inputs.game.value);
-        formData.append('series', formState.inputs.series.value);
-        formData.append('city', formState.inputs.city.value);
-        formData.append('country', formState.inputs.country.value);
-        formData.append('creator', auth.userID)
-        console.log(formData)
-        await sendRequest('http://localhost:5001/api/destinations', 'POST', formData, {
-            Authorization: 'Bearer ' + auth.token
-          });
+        // const formData = new FormData();
+        // formData.append('destinationName', formState.inputs.destinationName.value);
+        // formData.append('headline', formState.inputs.headline.value);
+        // formData.append('game', formState.inputs.game.value);
+        // formData.append('series', formState.inputs.series.value);
+        // formData.append('city', formState.inputs.city.value);
+        // formData.append('country', formState.inputs.country.value);
+        // formData.append('creator', auth.userID)
+
+        const headers = new Headers();
+        headers.append('Authorization', 'Bearer ' + auth.token)
+        headers.append('Content-Type', 'application/x-www-form-urlencoded')
+        await sendRequest('http://localhost:5001/api/destinations', 'POST', new URLSearchParams({
+            'destinationName': formState.inputs.destinationName.value,
+            'headline': formState.inputs.headline.value,
+            'game': formState.inputs.game.value,
+            'series': formState.inputs.series.value,
+            'city': formState.inputs.city.value,
+            'country': formState.inputs.country.value,
+            'creator': auth.userID,
+        }), headers
+        // {
+        //     Authorization: 'Bearer ' + auth.token
+        // }
+        );
         history.push('/')
     } catch (err) {
         
