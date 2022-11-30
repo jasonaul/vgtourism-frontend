@@ -86,6 +86,7 @@ const Authentify = () => {
                 JSON.stringify({
                     name: formState.inputs.name.value,
                     email: formState.inputs.email.value,
+                    image: formState.inputs.image.value,
                     password: formState.inputs.password.value
                 }),
                 {
@@ -130,6 +131,15 @@ const Authentify = () => {
             errorText="Please enter a valid email address."
             onInput={inputHandler}
           />
+           {!isLoginMode && <Input
+            element="input"
+            id="image"
+            type="text"
+            label="Profile Pic (Image Link)"
+            validators={[VALIDATOR_REQUIRE()]}
+            errorText="Please enter a profile picture image link."
+            onInput={inputHandler}
+          />}
           <Input
             element="input"
             id="password"

@@ -36,8 +36,9 @@ const DestinationItem = props => {
             {
                 Authorization: 'Bearer ' + auth.token
             });
+            history.push('/users')
             props.onDelete(props.id)
-            // history.push(`/users`)
+            
         } catch (err) {}
         
 

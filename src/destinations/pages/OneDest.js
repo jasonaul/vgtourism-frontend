@@ -13,7 +13,7 @@ const OneDest = () => {
     const { isLoading, error, sendRequest } = useHttpClient();
     const [loadedDestination, setLoadedDestination] = useState();
     const destID = useParams().destID;
-
+    
 
 const [ formDataSetter] = useFormHook({
         destinationName: {
@@ -26,12 +26,15 @@ const [ formDataSetter] = useFormHook({
             value: '',
             // chosenDestination.headline,
             isValid: false
-            //true
-        }
+            //true,
+        },
+        
+        
     }, false);
 
     useEffect(() => {
         const fetchDestination = async () => {
+            
         try {
             const responses = await sendRequest(`http://localhost:5001/api/destinations/${destID}`);
             setLoadedDestination(responses.destination)
@@ -53,7 +56,8 @@ const [ formDataSetter] = useFormHook({
                     value: responses.destination.game,
                     isValid: true
                 }
-                }, 
+                }, console.log(loadedDestination.coordinates),
+                console.log(`${loadedDestination.lat}` + ', ' `${loadedDestination.lng}`),
                 true);
             } catch (err) {}
         } ;   fetchDestination();
@@ -85,6 +89,7 @@ const [ formDataSetter] = useFormHook({
                 <Spinner />
             </div>
         )
+        
     }
 
     if (!loadedDestination && !error) {
@@ -97,6 +102,7 @@ const [ formDataSetter] = useFormHook({
 
     return (
         <>
+        
         <div className="site-content" id="main-destination-content">
             <div className="prime-gap l-sitewidth s-down">
                 <div className="DestoPageHeader">

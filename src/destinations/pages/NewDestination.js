@@ -32,7 +32,7 @@ function NewDestination() {
             }, 
             series: {
                 value: '',
-                isValid: false
+                isValid: true
             }, 
             city: {
                 value: '',
@@ -85,14 +85,7 @@ function NewDestination() {
             //preventing the default of reloading the page before info can be sent and crashes the session...
 
     try {
-        // const formData = new FormData();
-        // formData.append('destinationName', formState.inputs.destinationName.value);
-        // formData.append('headline', formState.inputs.headline.value);
-        // formData.append('game', formState.inputs.game.value);
-        // formData.append('series', formState.inputs.series.value);
-        // formData.append('city', formState.inputs.city.value);
-        // formData.append('country', formState.inputs.country.value);
-        // formData.append('creator', auth.userID)
+
 
         const headers = new Headers();
         headers.append('Authorization', 'Bearer ' + auth.token)
@@ -104,12 +97,20 @@ function NewDestination() {
             'series': formState.inputs.series.value,
             'city': formState.inputs.city.value,
             'country': formState.inputs.country.value,
+            'description1': formState.inputs.description1.value,
+            'description2': formState.inputs.description2.value,
+            'description3': formState.inputs.description3.value,
+            'image1': formState.inputs.image1.value,
+            'image2': formState.inputs.image2.value,
+            'ingameimg1': formState.inputs.ingameimg1.value,
+            'ingameimg2': formState.inputs.ingameimg2.value,
             'creator': auth.userID,
         }), headers
         // {
         //     Authorization: 'Bearer ' + auth.token
         // }
         );
+        alert("Destination added to your profile! You are now being redirected home.")
         history.push('/')
     } catch (err) {
         
@@ -188,6 +189,94 @@ function NewDestination() {
         label="Country" 
         validators={[VALIDATOR_REQUIRE()]}
          errorText="Select this destination's country."
+         onInput={formHandler}    
+         />
+
+         
+
+        <Input 
+        id="description1" 
+        className="input-info"
+        
+        element="textarea" 
+        type="description1" 
+        label="Introductory Paragraph - Describe the destination that inspired the video game asset." 
+        validators={[VALIDATOR_REQUIRE()]}
+         errorText="Please enter some text."
+         onInput={formHandler}    
+         />
+
+        <Input 
+        id="description2" 
+        className="input-info"
+        
+        element="textarea" 
+        type="description2" 
+        label="Destination Paragraph - Describe the Destination" 
+        validators={[VALIDATOR_REQUIRE()]}
+         errorText="Please enter some text."
+         onInput={formHandler}    
+         />
+
+        <Input 
+        id="description3" 
+        className="input-info"
+        
+        element="textarea" 
+        type="description3" 
+        label="Supporting Information paragraph" 
+        validators={[VALIDATOR_REQUIRE()]}
+         errorText="Please enter some text."
+         onInput={formHandler}    
+         />
+
+        <Input 
+        id="image1" 
+        className="input-info"
+        
+        element="input" 
+        type="image1" 
+        label="Image of Destination" 
+        validators={[VALIDATOR_REQUIRE()]}
+         errorText="Provide an image link of the destination or attraction related to the game!"
+         onInput={formHandler}    
+         />
+
+        <Input 
+        id="image2" 
+        className="input-info"
+        
+        element="input" 
+        type="image2" 
+        label="Image of Destination" 
+        validators={[VALIDATOR_REQUIRE()]}
+         errorText="Provide an image link of the destination or attraction related to the game!"
+         onInput={formHandler}    
+         />
+
+
+
+        <Input 
+        id="ingameimg1" 
+        className="input-info"
+        
+        element="input" 
+        type="ingameimg1" 
+        label="In-Game Image (link to image)" 
+        validators={[VALIDATOR_REQUIRE()]}
+         errorText="Provide an in-game image that relates to this destination!"
+         onInput={formHandler}    
+         />
+
+        <Input 
+        id="ingameimg2" 
+        className="input-info"
+        
+        element="input" 
+        type="ingameimg2" 
+        label="In-Game Image (link to image)" 
+        validators={[VALIDATOR_REQUIRE()]}
+         errorText="Provide another in-game image that relates to this destination!"
          onInput={formHandler}    
          />
 

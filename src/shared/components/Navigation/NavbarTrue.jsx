@@ -53,7 +53,7 @@ const NavbarTrue = props => {
                             <a href="/users">User Destinations</a>
                         </li>
                         <li className="li-left">
-                            <a href="/games">Games</a>
+                            <a href="/new">Add Destination</a>
                         </li>
                         <li>
                             <p>    |    </p>

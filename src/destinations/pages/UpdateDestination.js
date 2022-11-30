@@ -117,8 +117,8 @@ const updateSubmitHandler = async event => {
         validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a name for this destination." 
         onInput={formHook}
-        trasnferedValue={loadedDestination.destinationName}
-        transferedValid={true}
+        // trasnferedValue={loadedDestination.destinationName}
+        // transferedValid={true}
         // value={loadedDestination.destinationName}
         // transferedValid={formState.inputs.destinationName.isValid}
         />
@@ -127,12 +127,12 @@ const updateSubmitHandler = async event => {
         id="headline" 
         element="textarea" 
         type="text" 
-        label="One-sentence Description" 
+        label="One-sentence Description (10-characters minimum)" 
         validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a short-and-sweet description." 
         onInput={formHook}
-        trasnferedValue={loadedDestination.headline}
-        transferedValid={true}
+        // trasnferedValue={loadedDestination.headline}
+        // transferedValid={true}
         // trasnferedValue={formState.inputs.headline.value}
         // transferedValid={formState.inputs.destinationName.isValid}
         />
@@ -145,8 +145,8 @@ const updateSubmitHandler = async event => {
         validators={[VALIDATOR_REQUIRE()]}
         errorText="Title of the Game in which the destination is featured." 
         onInput={formHook}
-        trasnferedValue={loadedDestination.game}
-        transferedValid={true}
+        // trasnferedValue={loadedDestination.game}
+        // transferedValid={true}
         // trasnferedValue={formState.inputs.headline.value}
         // transferedValid={formState.inputs.destinationName.isValid}
         />

@@ -6,6 +6,7 @@ import Map from "../../shared/components/UIComponents/Map";
 const SingleDestLayout = props => {
     return (
 <>
+
 <div className="site-content" id="main-destination-content">
     <div className="prime-gap l-sitewidth s-down">
         <div className="DestoPageHeader">
@@ -43,6 +44,7 @@ const SingleDestLayout = props => {
                         </p>
                         <p className="article-text">
                             {props.description3}
+                            
                         </p>
 
                         </div>
